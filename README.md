@@ -47,6 +47,12 @@ To shutdown your client gracefully, use the `shutdown()` method:
 await Helios.shared.shutdown()
 ```
 
+## Logging
+
+You may enable logging of the Rust lib with an environment var at runtime (`RUST_LOG`). The library uses Rust's `env_logger` framework, so you may set the desired levels accordingly.
+
+<img width="424" alt="Screen Shot 2022-12-13 at 18 31 46" src="https://user-images.githubusercontent.com/8869678/207416542-1851b65e-0dc8-4a1a-9281-c24519240452.png">
+
 ## Building locally
 
 There is a `build.sh` script in the repo which can be used to build the `xcframework` for the [helios rust library](https://github.com/a16z/helios), this will create the XCFramework and place it (along with the Swift bridging files and checksum) in the `.build/helios-rs/build` directory. You may provide an additional parameter to the script to build a `debug` or `release` framework.
