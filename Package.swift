@@ -19,13 +19,17 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
-//        .binaryTarget(name: "helios", path: "helios.xcframework"), // When building the xcframework locally
+//        .binaryTarget(name: "helios", path: ".build/helios-rs/build/0.1.3/release/helios.xcframework"), // When building the xcframework locally
         .binaryTarget(
             name: "helios",
-            url: "https://github.com/rkreutz/HeliosKit/releases/download/0.1.0/helios.xcframework.zip",
-            checksum: "642542f3af573d571172096c08b5c4611cbdce8456a08a319f6ebc044ab50688"),
+            url: "https://github.com/rkreutz/HeliosKit/releases/download/0.1.3/helios.xcframework.zip",
+            checksum: "5fe79dba20ff11c7a28c20da4b803de51db32d7538631a4986f082e30fbbefff"),
         .target(
             name: "HeliosKit",
             dependencies: ["helios"]),
+        .testTarget(
+            name: "HeliosKitTests",
+            dependencies: ["HeliosKit"],
+            exclude: ["Config.swift.example"])
     ]
 )

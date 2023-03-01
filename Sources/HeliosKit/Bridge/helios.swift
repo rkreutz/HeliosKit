@@ -34,7 +34,6 @@ extension __swift_bridge__$Option$HeliosNetwork {
             return nil
         }
     }
-
     @inline(__always)
     static func fromSwiftRepr(_ val: Optional<HeliosNetwork>) -> __swift_bridge__$Option$HeliosNetwork {
         if let v = val {

@@ -62,3 +62,7 @@ There is a `build.sh` script in the repo which can be used to build the `xcframe
 
 > sh build.sh # .build/helios-rs/build/release/helios.xcframework
 ```
+
+## Running the test target
+
+To be able to compile the test target you must create a `Config.swift` file (you can just copy and rename `Config.swift.example`) and add the RPC URL you have for mainnet.
