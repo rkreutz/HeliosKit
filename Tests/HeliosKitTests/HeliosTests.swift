@@ -3,6 +3,7 @@ import XCTest
 
 final class HeliosTests: XCTestCase {
 
+    @available(iOS 15.0, *)
     func test_startHeliosAndCall() async throws {
         try await Helios.shared.start(rpcURL: Config.rpcUrl)
 
