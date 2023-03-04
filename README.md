@@ -1,6 +1,6 @@
 ## HeliosKit
 
-![Swift 5.2](https://img.shields.io/badge/Swift-5.5-orange.svg)
+![Swift 5.7](https://img.shields.io/badge/Swift-5.7-orange.svg)
 [![Platforms](https://img.shields.io/badge/platforms-macOS%2010.15%20|%20iOS%2013-ff0000.svg?style=flat)](https://github.com/rkreutz/HeliosKit)
 [![Swift Package Manager](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
