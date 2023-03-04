@@ -3,9 +3,8 @@ import XCTest
 
 final class HeliosTests: XCTestCase {
 
-    @available(iOS 15.0, *)
     func test_startHeliosAndCall() async throws {
-        try await Helios.shared.start(rpcURL: Config.rpcUrl)
+        try await Helios.shared.start(rpcURL: Config.rpcUrl, dataDirectory: nil)
 
         let (data, _) = try await Helios.shared.call(method: "eth_getBalance", params: ["0x8C8D7C46219D9205f056f28fee5950aD564d7465", "latest"])
         let json = try JSONSerialization.jsonObject(with: data) as? [String: String]

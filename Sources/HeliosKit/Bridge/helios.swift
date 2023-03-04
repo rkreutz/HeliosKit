@@ -139,7 +139,7 @@ class HeliosClientRefMut: HeliosClientRef {
     }
 }
 extension HeliosClientRefMut {
-    func start<GenericIntoRustString: IntoRustString>(_ untrusted_rpc_url: GenericIntoRustString, _ consensus_rpc_url: GenericIntoRustString, _ checkpoint: Optional<GenericIntoRustString>, _ rpc_port: UInt16, _ network: HeliosNetwork) async -> StartUpState {
+    func start<GenericIntoRustString: IntoRustString>(_ untrusted_rpc_url: GenericIntoRustString, _ consensus_rpc_url: GenericIntoRustString, _ checkpoint: Optional<GenericIntoRustString>, _ rpc_port: UInt16, _ network: HeliosNetwork, _ data_dir: Optional<GenericIntoRustString>) async -> StartUpState {
         func onComplete(cbWrapperPtr: UnsafeMutableRawPointer?, rustFnRetVal: __swift_bridge__$StartUpState) {
             let wrapper = Unmanaged<CbWrapper$HeliosClient$start>.fromOpaque(cbWrapperPtr!).takeRetainedValue()
             wrapper.cb(.success(rustFnRetVal.intoSwiftRepr()))
@@ -153,7 +153,7 @@ extension HeliosClientRefMut {
             let wrapper = CbWrapper$HeliosClient$start(cb: callback)
             let wrapperPtr = Unmanaged.passRetained(wrapper).toOpaque()
 
-            __swift_bridge__$HeliosClient$start(wrapperPtr, onComplete, ptr, { let rustString = untrusted_rpc_url.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), { let rustString = consensus_rpc_url.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), { if let rustString = optionalStringIntoRustString(checkpoint) { rustString.isOwned = false; return rustString.ptr } else { return nil } }(), rpc_port, network.intoFfiRepr())
+            __swift_bridge__$HeliosClient$start(wrapperPtr, onComplete, ptr, { let rustString = untrusted_rpc_url.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), { let rustString = consensus_rpc_url.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), { if let rustString = optionalStringIntoRustString(checkpoint) { rustString.isOwned = false; return rustString.ptr } else { return nil } }(), rpc_port, network.intoFfiRepr(), { if let rustString = optionalStringIntoRustString(data_dir) { rustString.isOwned = false; return rustString.ptr } else { return nil } }())
         })
     }
     class CbWrapper$HeliosClient$start {
