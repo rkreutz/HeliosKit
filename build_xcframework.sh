@@ -6,11 +6,11 @@ DEFAULT_VERSION='0.1.5'
 
 if [ "dev" = "$1" ]; then
     log::message "Building development version"
-    /bin/zsh "Build Scripts/dev.sh" $2
-elif test -f "Build Scripts/$1.sh"; then
+    /bin/zsh ".scripts/dev.sh" $2
+elif test -f ".scripts/$1.sh"; then
     log::message "Building version $1"
-    /bin/zsh "Build Scripts/$1.sh" $2
+    /bin/zsh ".scripts/$1.sh" $2
 else
     log::message "Building version $DEFAULT_VERSION"
-    /bin/zsh "Build Scripts/$DEFAULT_VERSION.sh" $1
+    /bin/zsh ".scripts/$DEFAULT_VERSION.sh" $1
 fi
