@@ -7,6 +7,7 @@ set -e
 PACKAGE_VERSION=0.1.5
 HELIOS_VERSION=0.1.3
 SWIFT_BRIDGE_VERSION=0.1.52
+ETHERS_VERSION=1.0.2
 
 env::setup
 env::build_configuration $1

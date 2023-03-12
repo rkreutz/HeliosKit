@@ -20,8 +20,11 @@ fi
 rust::setup
 
 # Change the target to the one you will use for development
-#rust::build_target x86_64-apple-ios
-rust::build
+rust::build_target x86_64-apple-ios
+#rust::build_ios
+#rust::build_ios_sim
+#rust::build_macos
+#rust::build
 
 build::lipo
 build::generate_c_headers
