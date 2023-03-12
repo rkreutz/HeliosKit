@@ -1,6 +1,6 @@
 #! /bin/zsh -e
 
-source "Build Scripts/functions.sh"
+source ".scripts/functions.sh"
 
 DEFAULT_VERSION='0.1.5'
 

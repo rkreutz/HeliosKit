@@ -1,6 +1,6 @@
 #! /bin/zsh -e
 
-source "Build Scripts/functions.sh"
+source ".scripts/functions.sh"
 
 set -e
 
