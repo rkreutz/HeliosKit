@@ -55,18 +55,20 @@ You may enable logging of the Rust lib with an environment var at runtime (`RUST
 
 ## Building locally
 
-There is a `build.sh` script in the repo which can be used to build the `xcframework` for the [helios rust library](https://github.com/a16z/helios), this will create the XCFramework and place it (along with the Swift bridging files and checksum) in the `.build/helios-rs/build` directory. You may specify which version you would like to build and provide an additional parameter to the script to build a `debug` or `release` framework.
+There is a `build_xcframework.sh` script in the repo which can be used to build the `xcframework` for the [helios rust library](https://github.com/a16z/helios), this will create the XCFramework and place it (along with the Swift bridging files and checksum) in the `.build/helios-rs/build` directory. You may specify which version you would like to build and provide an additional parameter to the script to build a `debug` or `release` framework.
 
 ```bash
-> sh build.sh 0.1.3 debug # .build/helios-rs/build/0.1.3/debug/helios.xcframework
+> zsh build_xcframework.sh 0.1.3 debug # .build/helios-rs/build/0.1.3/debug/helios.xcframework
 
-> sh build.sh 0.1.3 # .build/helios-rs/build/0.1.3/debug/helios.xcframework
+> zsh build_xcframework.sh 0.1.3 # .build/helios-rs/build/0.1.3/debug/helios.xcframework
 
-> sh build.sh debug # No version specified, defaults to latest
+> zsh build_xcframework.sh debug # No version specified, defaults to latest
 
-> sh build.sh # No version specified, defaults to latest
+> zsh build_xcframework.sh # No version specified, defaults to latest
 ```
 
 ## Running the test target
 
 To be able to compile the test target you must create a `Config.swift` file (you can just copy and rename `Config.swift.example`) and add the RPC URL you have for mainnet.
+
+You may optionaly provide a `rawTransaction` data to test `sendRawTransaction(_:)`.
