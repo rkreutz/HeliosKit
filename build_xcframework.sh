@@ -2,7 +2,7 @@
 
 source ".scripts/functions.sh"
 
-DEFAULT_VERSION='0.1.5'
+DEFAULT_VERSION='0.3.0'
 
 if [ "dev" = "$1" ]; then
     log::message "Building development version"

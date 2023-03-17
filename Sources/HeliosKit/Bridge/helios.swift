@@ -110,38 +110,6 @@ extension __swift_bridge__$Option$CallOpts {
         }
     }
 }
-extension CallOpts: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_CallOpts$new()
-    }
-
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_CallOpts$drop(vecPtr)
-    }
-
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_CallOpts$push(vecPtr, value.intoFfiRepr())
-    }
-
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_CallOpts$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_CallOpts$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_CallOpts$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_CallOpts$len(vecPtr)
-    }
-}
 enum HeliosNetwork {
     case MAINNET
     case GOERLI
@@ -257,38 +225,6 @@ extension __swift_bridge__$Option$StartUpState {
         }
     }
 }
-extension StartUpState: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_StartUpState$new()
-    }
-
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_StartUpState$drop(vecPtr)
-    }
-
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_StartUpState$push(vecPtr, value.intoFfiRepr())
-    }
-
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_StartUpState$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_StartUpState$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_StartUpState$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_StartUpState$len(vecPtr)
-    }
-}
 enum FilterBlockOption {
     case Range(from_block: Optional<BlockTag>, to_block: Optional<BlockTag>)
     case AtBlockHash(RustString)
@@ -372,38 +308,6 @@ extension __swift_bridge__$Option$LogFilter {
         } else {
             return __swift_bridge__$Option$LogFilter(is_some: false, val: __swift_bridge__$LogFilter())
         }
-    }
-}
-extension LogFilter: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_LogFilter$new()
-    }
-
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_LogFilter$drop(vecPtr)
-    }
-
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_LogFilter$push(vecPtr, value.intoFfiRepr())
-    }
-
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_LogFilter$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_LogFilter$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_LogFilter$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_LogFilter$len(vecPtr)
     }
 }
 struct Log {
@@ -558,38 +462,6 @@ extension __swift_bridge__$Option$TransactionReceipt {
         } else {
             return __swift_bridge__$Option$TransactionReceipt(is_some: false, val: __swift_bridge__$TransactionReceipt())
         }
-    }
-}
-extension TransactionReceipt: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_TransactionReceipt$new()
-    }
-
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_TransactionReceipt$drop(vecPtr)
-    }
-
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_TransactionReceipt$push(vecPtr, value.intoFfiRepr())
-    }
-
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_TransactionReceipt$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_TransactionReceipt$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_TransactionReceipt$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_TransactionReceipt$len(vecPtr)
     }
 }
 struct Transaction {
@@ -808,38 +680,6 @@ extension __swift_bridge__$Option$ExecutionBlock {
         }
     }
 }
-extension ExecutionBlock: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_ExecutionBlock$new()
-    }
-
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_ExecutionBlock$drop(vecPtr)
-    }
-
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_ExecutionBlock$push(vecPtr, value.intoFfiRepr())
-    }
-
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ExecutionBlock$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ExecutionBlock$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ExecutionBlock$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_ExecutionBlock$len(vecPtr)
-    }
-}
 struct Header {
     var slot: UInt64
     var proposer_index: UInt64
@@ -885,36 +725,88 @@ extension __swift_bridge__$Option$Header {
         }
     }
 }
-extension Header: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_Header$new()
+struct SyncingStatus {
+    var current_block: UInt64
+    var highest_block: UInt64
+    var starting_block: UInt64
+
+    init(current_block: UInt64,highest_block: UInt64,starting_block: UInt64) {
+        self.current_block = current_block
+        self.highest_block = highest_block
+        self.starting_block = starting_block
     }
 
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_Header$drop(vecPtr)
+    @inline(__always)
+    func intoFfiRepr() -> __swift_bridge__$SyncingStatus {
+        { let val = self; return __swift_bridge__$SyncingStatus(current_block: val.current_block, highest_block: val.highest_block, starting_block: val.starting_block); }()
+    }
+}
+extension __swift_bridge__$SyncingStatus {
+    @inline(__always)
+    func intoSwiftRepr() -> SyncingStatus {
+        { let val = self; return SyncingStatus(current_block: val.current_block, highest_block: val.highest_block, starting_block: val.starting_block); }()
+    }
+}
+extension __swift_bridge__$Option$SyncingStatus {
+    @inline(__always)
+    func intoSwiftRepr() -> Optional<SyncingStatus> {
+        if self.is_some {
+            return self.val.intoSwiftRepr()
+        } else {
+            return nil
+        }
     }
 
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_Header$push(vecPtr, value.intoFfiRepr())
+    @inline(__always)
+    static func fromSwiftRepr(_ val: Optional<SyncingStatus>) -> __swift_bridge__$Option$SyncingStatus {
+        if let v = val {
+            return __swift_bridge__$Option$SyncingStatus(is_some: true, val: v.intoFfiRepr())
+        } else {
+            return __swift_bridge__$Option$SyncingStatus(is_some: false, val: __swift_bridge__$SyncingStatus())
+        }
+    }
+}
+struct FeeHistory {
+    var base_fee_per_gas: RustVec<RustString>
+    var gas_used_ratio: RustVec<Double>
+    var oldest_block: UInt64
+    var reward: RustVec<RustString>
+
+    init(base_fee_per_gas: RustVec<RustString>,gas_used_ratio: RustVec<Double>,oldest_block: UInt64,reward: RustVec<RustString>) {
+        self.base_fee_per_gas = base_fee_per_gas
+        self.gas_used_ratio = gas_used_ratio
+        self.oldest_block = oldest_block
+        self.reward = reward
     }
 
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_Header$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
+    @inline(__always)
+    func intoFfiRepr() -> __swift_bridge__$FeeHistory {
+        { let val = self; return __swift_bridge__$FeeHistory(base_fee_per_gas: { let val = val.base_fee_per_gas; val.isOwned = false; return val.ptr }(), gas_used_ratio: { let val = val.gas_used_ratio; val.isOwned = false; return val.ptr }(), oldest_block: val.oldest_block, reward: { let val = val.reward; val.isOwned = false; return val.ptr }()); }()
+    }
+}
+extension __swift_bridge__$FeeHistory {
+    @inline(__always)
+    func intoSwiftRepr() -> FeeHistory {
+        { let val = self; return FeeHistory(base_fee_per_gas: RustVec(ptr: val.base_fee_per_gas), gas_used_ratio: RustVec(ptr: val.gas_used_ratio), oldest_block: val.oldest_block, reward: RustVec(ptr: val.reward)); }()
+    }
+}
+extension __swift_bridge__$Option$FeeHistory {
+    @inline(__always)
+    func intoSwiftRepr() -> Optional<FeeHistory> {
+        if self.is_some {
+            return self.val.intoSwiftRepr()
+        } else {
+            return nil
+        }
     }
 
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_Header$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_Header$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_Header$len(vecPtr)
+    @inline(__always)
+    static func fromSwiftRepr(_ val: Optional<FeeHistory>) -> __swift_bridge__$Option$FeeHistory {
+        if let v = val {
+            return __swift_bridge__$Option$FeeHistory(is_some: true, val: v.intoFfiRepr())
+        } else {
+            return __swift_bridge__$Option$FeeHistory(is_some: false, val: __swift_bridge__$FeeHistory())
+        }
     }
 }
 struct ResponseU64 {
@@ -958,38 +850,6 @@ extension __swift_bridge__$Option$ResponseU64 {
         }
     }
 }
-extension ResponseU64: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_ResponseU64$new()
-    }
-
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_ResponseU64$drop(vecPtr)
-    }
-
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_ResponseU64$push(vecPtr, value.intoFfiRepr())
-    }
-
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseU64$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseU64$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseU64$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_ResponseU64$len(vecPtr)
-    }
-}
 struct ResponseString {
     var value: RustString
     var failed: Bool
@@ -1029,38 +889,6 @@ extension __swift_bridge__$Option$ResponseString {
         } else {
             return __swift_bridge__$Option$ResponseString(is_some: false, val: __swift_bridge__$ResponseString())
         }
-    }
-}
-extension ResponseString: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_ResponseString$new()
-    }
-
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_ResponseString$drop(vecPtr)
-    }
-
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_ResponseString$push(vecPtr, value.intoFfiRepr())
-    }
-
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseString$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseString$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseString$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_ResponseString$len(vecPtr)
     }
 }
 struct ResponseVec8 {
@@ -1104,38 +932,6 @@ extension __swift_bridge__$Option$ResponseVec8 {
         }
     }
 }
-extension ResponseVec8: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_ResponseVec8$new()
-    }
-
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_ResponseVec8$drop(vecPtr)
-    }
-
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_ResponseVec8$push(vecPtr, value.intoFfiRepr())
-    }
-
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseVec8$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseVec8$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseVec8$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_ResponseVec8$len(vecPtr)
-    }
-}
 struct ResponseVecLog {
     var value: RustVec<Log>
     var failed: Bool
@@ -1175,38 +971,6 @@ extension __swift_bridge__$Option$ResponseVecLog {
         } else {
             return __swift_bridge__$Option$ResponseVecLog(is_some: false, val: __swift_bridge__$ResponseVecLog())
         }
-    }
-}
-extension ResponseVecLog: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_ResponseVecLog$new()
-    }
-
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_ResponseVecLog$drop(vecPtr)
-    }
-
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_ResponseVecLog$push(vecPtr, value.intoFfiRepr())
-    }
-
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseVecLog$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseVecLog$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseVecLog$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_ResponseVecLog$len(vecPtr)
     }
 }
 struct ResponseTransactionReceipt {
@@ -1250,38 +1014,6 @@ extension __swift_bridge__$Option$ResponseTransactionReceipt {
         }
     }
 }
-extension ResponseTransactionReceipt: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_ResponseTransactionReceipt$new()
-    }
-
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_ResponseTransactionReceipt$drop(vecPtr)
-    }
-
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_ResponseTransactionReceipt$push(vecPtr, value.intoFfiRepr())
-    }
-
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseTransactionReceipt$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseTransactionReceipt$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseTransactionReceipt$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_ResponseTransactionReceipt$len(vecPtr)
-    }
-}
 struct ResponseTransaction {
     var value: Optional<Transaction>
     var failed: Bool
@@ -1321,38 +1053,6 @@ extension __swift_bridge__$Option$ResponseTransaction {
         } else {
             return __swift_bridge__$Option$ResponseTransaction(is_some: false, val: __swift_bridge__$ResponseTransaction())
         }
-    }
-}
-extension ResponseTransaction: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_ResponseTransaction$new()
-    }
-
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_ResponseTransaction$drop(vecPtr)
-    }
-
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_ResponseTransaction$push(vecPtr, value.intoFfiRepr())
-    }
-
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseTransaction$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseTransaction$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseTransaction$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_ResponseTransaction$len(vecPtr)
     }
 }
 struct ResponseExecutionBlock {
@@ -1396,38 +1096,6 @@ extension __swift_bridge__$Option$ResponseExecutionBlock {
         }
     }
 }
-extension ResponseExecutionBlock: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_ResponseExecutionBlock$new()
-    }
-
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_ResponseExecutionBlock$drop(vecPtr)
-    }
-
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_ResponseExecutionBlock$push(vecPtr, value.intoFfiRepr())
-    }
-
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseExecutionBlock$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseExecutionBlock$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseExecutionBlock$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_ResponseExecutionBlock$len(vecPtr)
-    }
-}
 struct ResponseHeader {
     var value: Optional<Header>
     var failed: Bool
@@ -1469,36 +1137,86 @@ extension __swift_bridge__$Option$ResponseHeader {
         }
     }
 }
-extension ResponseHeader: Vectorizable {
-    static func vecOfSelfNew() -> UnsafeMutableRawPointer {
-        __swift_bridge__$Vec_ResponseHeader$new()
+struct ResponseSyncing {
+    var value: Optional<SyncingStatus>
+    var failed: Bool
+    var error: RustString
+
+    init(value: Optional<SyncingStatus>,failed: Bool,error: RustString) {
+        self.value = value
+        self.failed = failed
+        self.error = error
     }
 
-    static func vecOfSelfFree(vecPtr: UnsafeMutableRawPointer) {
-        __swift_bridge__$Vec_ResponseHeader$drop(vecPtr)
+    @inline(__always)
+    func intoFfiRepr() -> __swift_bridge__$ResponseSyncing {
+        { let val = self; return __swift_bridge__$ResponseSyncing(value: __swift_bridge__$Option$SyncingStatus.fromSwiftRepr(val.value), failed: val.failed, error: { let rustString = val.error.intoRustString(); rustString.isOwned = false; return rustString.ptr }()); }()
+    }
+}
+extension __swift_bridge__$ResponseSyncing {
+    @inline(__always)
+    func intoSwiftRepr() -> ResponseSyncing {
+        { let val = self; return ResponseSyncing(value: val.value.intoSwiftRepr(), failed: val.failed, error: RustString(ptr: val.error)); }()
+    }
+}
+extension __swift_bridge__$Option$ResponseSyncing {
+    @inline(__always)
+    func intoSwiftRepr() -> Optional<ResponseSyncing> {
+        if self.is_some {
+            return self.val.intoSwiftRepr()
+        } else {
+            return nil
+        }
     }
 
-    static func vecOfSelfPush(vecPtr: UnsafeMutableRawPointer, value: Self) {
-        __swift_bridge__$Vec_ResponseHeader$push(vecPtr, value.intoFfiRepr())
+    @inline(__always)
+    static func fromSwiftRepr(_ val: Optional<ResponseSyncing>) -> __swift_bridge__$Option$ResponseSyncing {
+        if let v = val {
+            return __swift_bridge__$Option$ResponseSyncing(is_some: true, val: v.intoFfiRepr())
+        } else {
+            return __swift_bridge__$Option$ResponseSyncing(is_some: false, val: __swift_bridge__$ResponseSyncing())
+        }
+    }
+}
+struct ResponseFeeHistory {
+    var value: Optional<FeeHistory>
+    var failed: Bool
+    var error: RustString
+
+    init(value: Optional<FeeHistory>,failed: Bool,error: RustString) {
+        self.value = value
+        self.failed = failed
+        self.error = error
     }
 
-    static func vecOfSelfPop(vecPtr: UnsafeMutableRawPointer) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseHeader$pop(vecPtr)
-        return maybeStruct.intoSwiftRepr()
+    @inline(__always)
+    func intoFfiRepr() -> __swift_bridge__$ResponseFeeHistory {
+        { let val = self; return __swift_bridge__$ResponseFeeHistory(value: __swift_bridge__$Option$FeeHistory.fromSwiftRepr(val.value), failed: val.failed, error: { let rustString = val.error.intoRustString(); rustString.isOwned = false; return rustString.ptr }()); }()
+    }
+}
+extension __swift_bridge__$ResponseFeeHistory {
+    @inline(__always)
+    func intoSwiftRepr() -> ResponseFeeHistory {
+        { let val = self; return ResponseFeeHistory(value: val.value.intoSwiftRepr(), failed: val.failed, error: RustString(ptr: val.error)); }()
+    }
+}
+extension __swift_bridge__$Option$ResponseFeeHistory {
+    @inline(__always)
+    func intoSwiftRepr() -> Optional<ResponseFeeHistory> {
+        if self.is_some {
+            return self.val.intoSwiftRepr()
+        } else {
+            return nil
+        }
     }
 
-    static func vecOfSelfGet(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseHeader$get(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfGetMut(vecPtr: UnsafeMutableRawPointer, index: UInt) -> Optional<Self> {
-        let maybeStruct = __swift_bridge__$Vec_ResponseHeader$get_mut(vecPtr, index)
-        return maybeStruct.intoSwiftRepr()
-    }
-
-    static func vecOfSelfLen(vecPtr: UnsafeMutableRawPointer) -> UInt {
-        __swift_bridge__$Vec_ResponseHeader$len(vecPtr)
+    @inline(__always)
+    static func fromSwiftRepr(_ val: Optional<ResponseFeeHistory>) -> __swift_bridge__$Option$ResponseFeeHistory {
+        if let v = val {
+            return __swift_bridge__$Option$ResponseFeeHistory(is_some: true, val: v.intoFfiRepr())
+        } else {
+            return __swift_bridge__$Option$ResponseFeeHistory(is_some: false, val: __swift_bridge__$ResponseFeeHistory())
+        }
     }
 }
 
@@ -1730,6 +1448,31 @@ extension HeliosClientRef {
         var cb: (Result<ResponseString, Never>) -> ()
     
         init(cb: @escaping (Result<ResponseString, Never>) -> ()) {
+            self.cb = cb
+        }
+    }
+
+    func get_fee_history(_ block_count: UInt64, _ last_block: UInt64, _ reward_percentiles: RustVec<Double>) async -> ResponseFeeHistory {
+        func onComplete(cbWrapperPtr: UnsafeMutableRawPointer?, rustFnRetVal: __swift_bridge__$ResponseFeeHistory) {
+            let wrapper = Unmanaged<CbWrapper$HeliosClient$get_fee_history>.fromOpaque(cbWrapperPtr!).takeRetainedValue()
+            wrapper.cb(.success(rustFnRetVal.intoSwiftRepr()))
+        }
+
+        return await withCheckedContinuation({ (continuation: CheckedContinuation<ResponseFeeHistory, Never>) in
+            let callback = { rustFnRetVal in
+                continuation.resume(with: rustFnRetVal)
+            }
+
+            let wrapper = CbWrapper$HeliosClient$get_fee_history(cb: callback)
+            let wrapperPtr = Unmanaged.passRetained(wrapper).toOpaque()
+
+            __swift_bridge__$HeliosClient$get_fee_history(wrapperPtr, onComplete, ptr, block_count, last_block, { let val = reward_percentiles; val.isOwned = false; return val.ptr }())
+        })
+    }
+    class CbWrapper$HeliosClient$get_fee_history {
+        var cb: (Result<ResponseFeeHistory, Never>) -> ()
+    
+        init(cb: @escaping (Result<ResponseFeeHistory, Never>) -> ()) {
             self.cb = cb
         }
     }
@@ -2105,6 +1848,31 @@ extension HeliosClientRef {
         var cb: (Result<ResponseHeader, Never>) -> ()
     
         init(cb: @escaping (Result<ResponseHeader, Never>) -> ()) {
+            self.cb = cb
+        }
+    }
+
+    func syncing() async -> ResponseSyncing {
+        func onComplete(cbWrapperPtr: UnsafeMutableRawPointer?, rustFnRetVal: __swift_bridge__$ResponseSyncing) {
+            let wrapper = Unmanaged<CbWrapper$HeliosClient$syncing>.fromOpaque(cbWrapperPtr!).takeRetainedValue()
+            wrapper.cb(.success(rustFnRetVal.intoSwiftRepr()))
+        }
+
+        return await withCheckedContinuation({ (continuation: CheckedContinuation<ResponseSyncing, Never>) in
+            let callback = { rustFnRetVal in
+                continuation.resume(with: rustFnRetVal)
+            }
+
+            let wrapper = CbWrapper$HeliosClient$syncing(cb: callback)
+            let wrapperPtr = Unmanaged.passRetained(wrapper).toOpaque()
+
+            __swift_bridge__$HeliosClient$syncing(wrapperPtr, onComplete, ptr)
+        })
+    }
+    class CbWrapper$HeliosClient$syncing {
+        var cb: (Result<ResponseSyncing, Never>) -> ()
+    
+        init(cb: @escaping (Result<ResponseSyncing, Never>) -> ()) {
             self.cb = cb
         }
     }

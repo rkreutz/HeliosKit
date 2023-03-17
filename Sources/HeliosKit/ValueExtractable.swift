@@ -85,3 +85,33 @@ extension ResponseExecutionBlock: ValueExtractable {
         }
     }
 }
+
+extension ResponseSyncing: ValueExtractable {
+    func extractValue() throws -> EVMSyncStatus {
+        if failed {
+            throw HeliosError.failed(error.toString())
+        } else {
+            if let value = value {
+                return .syncing(
+                    EVMSyncStatus.Progress(
+                        currentBlock: value.current_block,
+                        highestBlock: value.highest_block,
+                        startingBlock: value.starting_block
+                    )
+                )
+            } else {
+                return .synced
+            }
+        }
+    }
+}
+
+extension ResponseFeeHistory: ValueExtractable {
+    func extractValue() throws -> EVMFeeHistory? {
+        if failed {
+            throw HeliosError.failed(error.toString())
+        } else {
+            return value.map(EVMFeeHistory.init(from:))
+        }
+    }
+}

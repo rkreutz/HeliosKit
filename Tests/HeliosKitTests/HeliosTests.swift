@@ -67,6 +67,17 @@ final class HeliosTests: XCTestCase {
         XCTAssertEqual(priorityFee, "1000000000")
     }
 
+    func test_getFeeHistory() async throws {
+        let feeHistory = try await Helios.shared.getFeeHistory(
+            fromBlock: 16845252,
+            numberOfPastBlocks: 10,
+            rewardPercentiles: [0.25, 0.75]
+        )
+
+        print(feeHistory)
+        XCTAssertEqual(feeHistory.oldestBlock, 16845232)
+    }
+
     func test_getBlockNumber() async throws {
         let blockNumber = try await Helios.shared.getBlockNumber()
         XCTAssertEqual(blockNumber, 16770609)
@@ -143,13 +154,13 @@ final class HeliosTests: XCTestCase {
 
     func test_getLogs() async throws {
         let logs = try await Helios.shared.getLogs(
-            from: .custom(16799232),
-            to: .custom(16799232),
+            from: .custom(16839546),
+            to: .custom(16839546),
             address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
             topics: [
                 "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef", // keccak(Transfer(address,address,uint256))
-                "0x000000000000000000000000e29624a8ae6ff5033335e3a57b946a57f67968cf", // from
-                "0x00000000000000000000000055799ce8e19e3e5d445a643bad1fbc1a5a86f16f"  // to
+                "0x0000000000000000000000006dfc34609a05bc22319fa4cce1d1e2929548c0d7", // from
+                "0x00000000000000000000000071992222549b7bc19b4d0d5c1369bd754ca8366e"  // to
 
             ]
         )
@@ -157,12 +168,12 @@ final class HeliosTests: XCTestCase {
         XCTAssertEqual(logs.count, 1)
 
         let logsByHash = try await Helios.shared.getLogs(
-            at: "0xe61200d1be1af3c94dcbc091f01c8e3216910a8818d77e95f03a07539f9e56ab",
+            at: "0xa751c15f0379237f7a8fcb2caed731822bd0a620c52278b06ff04c0b86801505",
             address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
             topics: [
                 "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef", // keccak(Transfer(address,address,uint256))
-                "0x000000000000000000000000e29624a8ae6ff5033335e3a57b946a57f67968cf", // from
-                "0x00000000000000000000000055799ce8e19e3e5d445a643bad1fbc1a5a86f16f"  // to
+                "0x0000000000000000000000006dfc34609a05bc22319fa4cce1d1e2929548c0d7", // from
+                "0x00000000000000000000000071992222549b7bc19b4d0d5c1369bd754ca8366e"  // to
             ]
         )
         print(logsByHash)
@@ -202,6 +213,12 @@ final class HeliosTests: XCTestCase {
 
         print(header)
         XCTAssertEqual(header.bodyRoot, "0x030f9e8e4792b24d3d169776a3c0d288e9644262fd8b1fa9ba178abcbc9c438c")
+    }
+
+    func test_syncing() async throws {
+        let status = try await Helios.shared.syncing()
+
+        XCTAssertEqual(status, .synced)
     }
 }
 

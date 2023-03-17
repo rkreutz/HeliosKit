@@ -72,6 +72,7 @@ pre_build::setup_openssl() {
         git clone https://github.com/sfackler/rust-openssl $OPENSSL_DIRECTORY
     fi
     cd $OPENSSL_DIRECTORY
+    git fetch --all
     git checkout -f $1
     # For compatibility issues with iOS simulator
     sed -i '' 's/openssl-src = { version = "111", optional = true }/openssl-src = { version = "300", optional = true }/' "$OPENSSL_DIRECTORY/openssl-sys/Cargo.toml"
@@ -83,6 +84,7 @@ pre_build::setup_helios() {
         git clone https://github.com/a16z/helios $HELIOS_DIRECTORY
     fi
     cd $HELIOS_DIRECTORY
+    git fetch --all
     git checkout -f tags/$HELIOS_VERSION
 }
 
@@ -115,6 +117,7 @@ pre_build::modify_helios() {
     sed -i '' '/^[[]dependencies[]]/a\'$'\n''hex = "0.4.3"'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
     sed -i '' '/^[[]dependencies[]]/a\'$'\n''ethers = "'$ETHERS_VERSION'"'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
     sed -i '' '/^[[]dependencies[]]/a\'$'\n''env_logger = "0.9.0"'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
+    sed -i '' '/^[[]dependencies[]]/a\'$'\n''eyre = "0.6"'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
 
     # This PR regressed builds on iOS: https://github.com/a16z/helios/pull/160
     # It would cause an error, "duplicate lang item in crate `core`: `sized`".
@@ -165,7 +168,7 @@ rust::build_target() {
         log::error 'Must specify target as input to rust::build_target'
         exit -1
     fi
-    cargo +$RUST_TOOLCHAIN build $([[ $1 = "aarch64-apple-ios-sim" ]] && echo "-Z build-std") --target $1 $([[ $BUILD_CONFIG = "release" ]] && echo --release)
+    cargo +$RUST_TOOLCHAIN build $([[ $1 = "aarch64-apple-ios-sim" ]] && echo "-Z build-std") --lib --package helios --target $1 $([[ $BUILD_CONFIG = "release" ]] && echo --release)
 }
 
 rust::build_ios() {

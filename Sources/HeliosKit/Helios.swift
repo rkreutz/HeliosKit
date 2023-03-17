@@ -139,6 +139,25 @@ public final class Helios {
         return try response.extractValue()
     }
 
+    /// Gets the fee history for a given block range.
+    ///
+    /// - Parameters:
+    ///   - latestBlock: the most recent block in the block range
+    ///   - numberOfPastBlocks: the number of blocks before the latest block that should be queried for the fee history.
+    ///   - rewardPercentiles: a monotonically increasing list of percentile values to sample from each block's effective priority fees per gas in ascending order, weighted by gas used.
+    /// - Returns: the fee history for the given block range.
+    public func getFeeHistory(fromBlock latestBlock: UInt64, numberOfPastBlocks: UInt64, rewardPercentiles: [Double] = []) async throws -> EVMFeeHistory {
+        let rewardVec = RustVec<Double>()
+        for percentile in rewardPercentiles {
+            rewardVec.push(value: percentile)
+        }
+        let response = await client.get_fee_history(numberOfPastBlocks, latestBlock, rewardVec)
+        guard let feeHistory = try response.extractValue() else {
+            throw HeliosError.feeHistoryUnavailable
+        }
+        return feeHistory
+    }
+
     /// Returns the current block height
     /// - Returns: the block height of the network
     public func getBlockNumber() async throws -> UInt64 {
@@ -337,6 +356,13 @@ public final class Helios {
         let header = try response.extractValue()
         guard let header = header else { throw HeliosError.headerUnavailable }
         return header
+    }
+
+    /// Gets the current sync status of the light client
+    /// - Returns: the sync status
+    public func syncing() async throws -> EVMSyncStatus {
+        let response = await client.syncing()
+        return try response.extractValue()
     }
 
     /// Shuts down the client

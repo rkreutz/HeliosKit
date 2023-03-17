@@ -7,6 +7,7 @@ public enum HeliosError: LocalizedError {
     case executionBlockUnavailable
     case transactionUnavailable
     case headerUnavailable
+    case feeHistoryUnavailable
     case failed(String)
 
     public var errorDescription: String? {
@@ -23,6 +24,8 @@ public enum HeliosError: LocalizedError {
             return "Transaction unavailable."
         case .headerUnavailable:
             return "Header unavailable."
+        case .feeHistoryUnavailable:
+            return "Fee History unavailable."
         case let .failed(underlying):
             return underlying
         }
