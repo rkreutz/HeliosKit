@@ -4,7 +4,7 @@ import XCTest
 final class HeliosTests: XCTestCase {
 
     override func setUp() async throws {
-        try await Helios.shared.start(rpcURL: Config.rpcUrl, checkpoint: "0x793da86cdd7aac6f2fbe2dabb81c40ee8ea65752caec3530e13fce23d6ac2804", dataDirectory: nil)
+        try await Helios.shared.start(rpcURL: Config.rpcUrl)
     }
 
     override func tearDown() async throws {
@@ -154,13 +154,13 @@ final class HeliosTests: XCTestCase {
 
     func test_getLogs() async throws {
         let logs = try await Helios.shared.getLogs(
-            from: .custom(16839546),
-            to: .custom(16839546),
+            from: .custom(16971411),
+            to: .custom(16971411),
             address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
             topics: [
                 "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef", // keccak(Transfer(address,address,uint256))
-                "0x0000000000000000000000006dfc34609a05bc22319fa4cce1d1e2929548c0d7", // from
-                "0x00000000000000000000000071992222549b7bc19b4d0d5c1369bd754ca8366e"  // to
+                "0x0000000000000000000000006b267718afb1db89647f229dc6b02c59cf531ed3", // from
+                "0x000000000000000000000000ef8801eaf234ff82801821ffe2d78d60a0237f97"  // to
 
             ]
         )
@@ -168,12 +168,12 @@ final class HeliosTests: XCTestCase {
         XCTAssertEqual(logs.count, 1)
 
         let logsByHash = try await Helios.shared.getLogs(
-            at: "0xa751c15f0379237f7a8fcb2caed731822bd0a620c52278b06ff04c0b86801505",
+            at: "0xf06cc88ec0a2a1c0f9175ca619831a4b149b1c7fa6084630d0c6f1f0a841dfb6",
             address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
             topics: [
                 "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef", // keccak(Transfer(address,address,uint256))
-                "0x0000000000000000000000006dfc34609a05bc22319fa4cce1d1e2929548c0d7", // from
-                "0x00000000000000000000000071992222549b7bc19b4d0d5c1369bd754ca8366e"  // to
+                "0x0000000000000000000000006b267718afb1db89647f229dc6b02c59cf531ed3", // from
+                "0x000000000000000000000000ef8801eaf234ff82801821ffe2d78d60a0237f97"  // to
             ]
         )
         print(logsByHash)
