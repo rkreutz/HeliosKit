@@ -6,7 +6,8 @@ set -e
 
 PACKAGE_VERSION=0.1.5
 HELIOS_VERSION=0.1.3
-SWIFT_BRIDGE_VERSION=0.1.52
+SWIFT_BRIDGE_PACKAGE='git = "https:\/\/github.com\/rkreutz\/swift-bridge.git", branch = "feature\/struct-vec-support"'
+SWIFT_BRIDGE_FEATURES='["async", "compatibility"]'
 ETHERS_VERSION=1.0.2
 
 env::setup

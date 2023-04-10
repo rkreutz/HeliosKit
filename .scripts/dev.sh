@@ -5,7 +5,6 @@ source ".scripts/functions.sh"
 set -e
 
 PACKAGE_VERSION=999.0.0
-HELIOS_VERSION=0.3.0
 
 env::setup
 env::build_configuration $1

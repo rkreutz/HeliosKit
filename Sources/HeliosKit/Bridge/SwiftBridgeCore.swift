@@ -101,9 +101,6 @@ func optionalRustStrToRustStr<S: ToRustStr, T>(_ str: Optional<S>, _ withUnsafeR
         return withUnsafeRustStr(RustStr(start: nil, len: 0))
     }
 }
-// TODO:
-//  Implement iterator https://developer.apple.com/documentation/swift/iteratorprotocol
-
 class RustVec<T: Vectorizable> {
     var ptr: UnsafeMutableRawPointer
     var isOwned: Bool = true
@@ -183,28 +180,11 @@ extension RustVec: Collection {
     }
 }
 
-extension RustVec: RandomAccessCollection {
-}
+extension RustVec: RandomAccessCollection {}
 
 extension UnsafeBufferPointer {
     func toFfiSlice () -> __private__FfiSlice {
         __private__FfiSlice(start: UnsafeMutablePointer(mutating: self.baseAddress), len: UInt(self.count))
-    }
-}
-
-extension Array {
-    /// Get an UnsafeBufferPointer to the array's content's first byte with the array's length.
-    ///
-    /// ```
-    /// // BAD! Swift will immediately free the arrays memory and so your pointer is invalid.
-    /// let pointer = useMyPointer([1, 2, 3].toUnsafeBufferPointer())
-    ///
-    /// // GOOD! The array will outlive the buffer pointer.
-    /// let array = [1, 2, 3]
-    /// useMyPointer(array.toUnsafeBufferPointer())
-    /// ```
-    func toUnsafeBufferPointer() -> UnsafeBufferPointer<Element> {
-        UnsafeBufferPointer(start: UnsafePointer(self), count: self.count)
     }
 }
 
@@ -968,5 +948,305 @@ extension RustResult {
         case .Err(let err):
             return .failure(err)
         }
+    }
+}
+
+
+extension __private__OptionU8 {
+    func intoSwiftRepr() -> Optional<UInt8> {
+        if self.is_some {
+            return self.val 
+        } else {
+            return nil
+        }
+    }
+
+    init(_ val: Optional<UInt8>) {
+        if let val = val {
+            self = Self(val: val, is_some: true) 
+        } else {
+            self = Self(val: 123, is_some: false) 
+        }
+    }
+}
+extension Optional where Wrapped == UInt8 {
+    func intoFfiRepr() -> __private__OptionU8 {
+        __private__OptionU8(self) 
+    }
+}
+
+extension __private__OptionI8 {
+    func intoSwiftRepr() -> Optional<Int8> {
+        if self.is_some {
+            return self.val 
+        } else {
+            return nil
+        }
+    }
+
+    init(_ val: Optional<Int8>) {
+        if let val = val {
+            self = Self(val: val, is_some: true) 
+        } else {
+            self = Self(val: 123, is_some: false) 
+        }
+    }
+}
+extension Optional where Wrapped == Int8 {
+    func intoFfiRepr() -> __private__OptionI8 {
+        __private__OptionI8(self) 
+    }
+}
+
+extension __private__OptionU16 {
+    func intoSwiftRepr() -> Optional<UInt16> {
+        if self.is_some {
+            return self.val 
+        } else {
+            return nil
+        }
+    }
+
+    init(_ val: Optional<UInt16>) {
+        if let val = val {
+            self = Self(val: val, is_some: true) 
+        } else {
+            self = Self(val: 123, is_some: false) 
+        }
+    }
+}
+extension Optional where Wrapped == UInt16 {
+    func intoFfiRepr() -> __private__OptionU16 {
+        __private__OptionU16(self) 
+    }
+}
+
+extension __private__OptionI16 {
+    func intoSwiftRepr() -> Optional<Int16> {
+        if self.is_some {
+            return self.val 
+        } else {
+            return nil
+        }
+    }
+
+    init(_ val: Optional<Int16>) {
+        if let val = val {
+            self = Self(val: val, is_some: true) 
+        } else {
+            self = Self(val: 123, is_some: false) 
+        }
+    }
+}
+extension Optional where Wrapped == Int16 {
+    func intoFfiRepr() -> __private__OptionI16 {
+        __private__OptionI16(self) 
+    }
+}
+
+extension __private__OptionU32 {
+    func intoSwiftRepr() -> Optional<UInt32> {
+        if self.is_some {
+            return self.val 
+        } else {
+            return nil
+        }
+    }
+
+    init(_ val: Optional<UInt32>) {
+        if let val = val {
+            self = Self(val: val, is_some: true) 
+        } else {
+            self = Self(val: 123, is_some: false) 
+        }
+    }
+}
+extension Optional where Wrapped == UInt32 {
+    func intoFfiRepr() -> __private__OptionU32 {
+        __private__OptionU32(self) 
+    }
+}
+
+extension __private__OptionI32 {
+    func intoSwiftRepr() -> Optional<Int32> {
+        if self.is_some {
+            return self.val 
+        } else {
+            return nil
+        }
+    }
+
+    init(_ val: Optional<Int32>) {
+        if let val = val {
+            self = Self(val: val, is_some: true) 
+        } else {
+            self = Self(val: 123, is_some: false) 
+        }
+    }
+}
+extension Optional where Wrapped == Int32 {
+    func intoFfiRepr() -> __private__OptionI32 {
+        __private__OptionI32(self) 
+    }
+}
+
+extension __private__OptionU64 {
+    func intoSwiftRepr() -> Optional<UInt64> {
+        if self.is_some {
+            return self.val 
+        } else {
+            return nil
+        }
+    }
+
+    init(_ val: Optional<UInt64>) {
+        if let val = val {
+            self = Self(val: val, is_some: true) 
+        } else {
+            self = Self(val: 123, is_some: false) 
+        }
+    }
+}
+extension Optional where Wrapped == UInt64 {
+    func intoFfiRepr() -> __private__OptionU64 {
+        __private__OptionU64(self) 
+    }
+}
+
+extension __private__OptionI64 {
+    func intoSwiftRepr() -> Optional<Int64> {
+        if self.is_some {
+            return self.val 
+        } else {
+            return nil
+        }
+    }
+
+    init(_ val: Optional<Int64>) {
+        if let val = val {
+            self = Self(val: val, is_some: true) 
+        } else {
+            self = Self(val: 123, is_some: false) 
+        }
+    }
+}
+extension Optional where Wrapped == Int64 {
+    func intoFfiRepr() -> __private__OptionI64 {
+        __private__OptionI64(self) 
+    }
+}
+
+extension __private__OptionUsize {
+    func intoSwiftRepr() -> Optional<UInt> {
+        if self.is_some {
+            return self.val 
+        } else {
+            return nil
+        }
+    }
+
+    init(_ val: Optional<UInt>) {
+        if let val = val {
+            self = Self(val: val, is_some: true) 
+        } else {
+            self = Self(val: 123, is_some: false) 
+        }
+    }
+}
+extension Optional where Wrapped == UInt {
+    func intoFfiRepr() -> __private__OptionUsize {
+        __private__OptionUsize(self) 
+    }
+}
+
+extension __private__OptionIsize {
+    func intoSwiftRepr() -> Optional<Int> {
+        if self.is_some {
+            return self.val 
+        } else {
+            return nil
+        }
+    }
+
+    init(_ val: Optional<Int>) {
+        if let val = val {
+            self = Self(val: val, is_some: true) 
+        } else {
+            self = Self(val: 123, is_some: false) 
+        }
+    }
+}
+extension Optional where Wrapped == Int {
+    func intoFfiRepr() -> __private__OptionIsize {
+        __private__OptionIsize(self) 
+    }
+}
+
+extension __private__OptionF32 {
+    func intoSwiftRepr() -> Optional<Float> {
+        if self.is_some {
+            return self.val 
+        } else {
+            return nil
+        }
+    }
+
+    init(_ val: Optional<Float>) {
+        if let val = val {
+            self = Self(val: val, is_some: true) 
+        } else {
+            self = Self(val: 123.4, is_some: false) 
+        }
+    }
+}
+extension Optional where Wrapped == Float {
+    func intoFfiRepr() -> __private__OptionF32 {
+        __private__OptionF32(self) 
+    }
+}
+
+extension __private__OptionF64 {
+    func intoSwiftRepr() -> Optional<Double> {
+        if self.is_some {
+            return self.val 
+        } else {
+            return nil
+        }
+    }
+
+    init(_ val: Optional<Double>) {
+        if let val = val {
+            self = Self(val: val, is_some: true) 
+        } else {
+            self = Self(val: 123.4, is_some: false) 
+        }
+    }
+}
+extension Optional where Wrapped == Double {
+    func intoFfiRepr() -> __private__OptionF64 {
+        __private__OptionF64(self) 
+    }
+}
+
+extension __private__OptionBool {
+    func intoSwiftRepr() -> Optional<Bool> {
+        if self.is_some {
+            return self.val 
+        } else {
+            return nil
+        }
+    }
+
+    init(_ val: Optional<Bool>) {
+        if let val = val {
+            self = Self(val: val, is_some: true) 
+        } else {
+            self = Self(val: false, is_some: false) 
+        }
+    }
+}
+extension Optional where Wrapped == Bool {
+    func intoFfiRepr() -> __private__OptionBool {
+        __private__OptionBool(self) 
     }
 }

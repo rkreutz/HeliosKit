@@ -37,8 +37,10 @@ env::setup() {
     log::info "RUST_TOOLCHAIN=$RUST_TOOLCHAIN"
     export ETHERS_VERSION=${ETHERS_VERSION:-'1.0'}
     log::info "ETHERS_VERSION=$ETHERS_VERSION"
-    export SWIFT_BRIDGE_VERSION=${SWIFT_BRIDGE_VERSION:-'0.1'}
-    log::info "SWIFT_BRIDGE_VERSION=$SWIFT_BRIDGE_VERSION"
+    export SWIFT_BRIDGE_PACKAGE=${SWIFT_BRIDGE_PACKAGE:-'version = "0.1.51"'}
+    log::info "SWIFT_BRIDGE_PACKAGE=$SWIFT_BRIDGE_PACKAGE"
+    export SWIFT_BRIDGE_FEATURES=${SWIFT_BRIDGE_FEATURES:-'["async"]'}
+    log::info "SWIFT_BRIDGE_FEATURES=$SWIFT_BRIDGE_FEATURES"
     export SWIFT_BRIDGE_OUT_DIR="$HELIOS_DIRECTORY/generated"
 }
 
@@ -107,11 +109,11 @@ pre_build::modify_helios() {
 
     # Add swift-bridge
     if grep -q "[[]build-dependencies[]]" "$HELIOS_DIRECTORY/Cargo.toml"; then
-        sed -i '' '/^[[]build-dependencies[]]/a\'$'\n''swift-bridge-build = "'$SWIFT_BRIDGE_VERSION'"'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
+        sed -i '' '/^[[]build-dependencies[]]/a\'$'\n''swift-bridge-build = { '$SWIFT_BRIDGE_PACKAGE' }'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
     else
-        sed -i '' 's/^[[]dependencies[]]/[build-dependencies]\nswift-bridge-build = "'$SWIFT_BRIDGE_VERSION'"\n\n[dependencies]/' "$HELIOS_DIRECTORY/Cargo.toml"
+        sed -i '' 's/^[[]dependencies[]]/[build-dependencies]\nswift-bridge-build = { '$SWIFT_BRIDGE_PACKAGE' }\n\n[dependencies]/' "$HELIOS_DIRECTORY/Cargo.toml"
     fi
-    sed -i '' '/^[[]dependencies[]]/a\'$'\n''swift-bridge = { version = "'$SWIFT_BRIDGE_VERSION'", features = ["async"] }'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
+    sed -i '' '/^[[]dependencies[]]/a\'$'\n''swift-bridge = { '$SWIFT_BRIDGE_PACKAGE', features = '$SWIFT_BRIDGE_FEATURES' }'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
 
     # Add other dependencies
     sed -i '' '/^[[]dependencies[]]/a\'$'\n''hex = "0.4.3"'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
