@@ -603,7 +603,7 @@ extension __swift_bridge__$Option$Transactions {
         }
     }
 }
-struct ExecutionBlock {
+struct Block {
     var number: UInt64
     var base_fee_per_gas: RustString
     var difficulty: RustString
@@ -651,19 +651,19 @@ struct ExecutionBlock {
     }
 
     @inline(__always)
-    func intoFfiRepr() -> __swift_bridge__$ExecutionBlock {
-        { let val = self; return __swift_bridge__$ExecutionBlock(number: val.number, base_fee_per_gas: { let rustString = val.base_fee_per_gas.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), difficulty: { let rustString = val.difficulty.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), extra_data: { let val = val.extra_data; val.isOwned = false; return val.ptr }(), gas_limit: val.gas_limit, gas_used: val.gas_used, hash: { let rustString = val.hash.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), logs_bloom: { let val = val.logs_bloom; val.isOwned = false; return val.ptr }(), miner: { let rustString = val.miner.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), mix_hash: { let rustString = val.mix_hash.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), nonce: { let rustString = val.nonce.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), parent_hash: { let rustString = val.parent_hash.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), receipts_root: { let rustString = val.receipts_root.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), sha3_uncles: { let rustString = val.sha3_uncles.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), size: val.size, state_root: { let rustString = val.state_root.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), timestamp: val.timestamp, total_difficulty: val.total_difficulty, transactions: val.transactions.intoFfiRepr(), transactions_root: { let rustString = val.transactions_root.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), uncles: { let val = val.uncles; val.isOwned = false; return val.ptr }()); }()
+    func intoFfiRepr() -> __swift_bridge__$Block {
+        { let val = self; return __swift_bridge__$Block(number: val.number, base_fee_per_gas: { let rustString = val.base_fee_per_gas.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), difficulty: { let rustString = val.difficulty.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), extra_data: { let val = val.extra_data; val.isOwned = false; return val.ptr }(), gas_limit: val.gas_limit, gas_used: val.gas_used, hash: { let rustString = val.hash.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), logs_bloom: { let val = val.logs_bloom; val.isOwned = false; return val.ptr }(), miner: { let rustString = val.miner.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), mix_hash: { let rustString = val.mix_hash.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), nonce: { let rustString = val.nonce.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), parent_hash: { let rustString = val.parent_hash.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), receipts_root: { let rustString = val.receipts_root.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), sha3_uncles: { let rustString = val.sha3_uncles.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), size: val.size, state_root: { let rustString = val.state_root.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), timestamp: val.timestamp, total_difficulty: val.total_difficulty, transactions: val.transactions.intoFfiRepr(), transactions_root: { let rustString = val.transactions_root.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), uncles: { let val = val.uncles; val.isOwned = false; return val.ptr }()); }()
     }
 }
-extension __swift_bridge__$ExecutionBlock {
+extension __swift_bridge__$Block {
     @inline(__always)
-    func intoSwiftRepr() -> ExecutionBlock {
-        { let val = self; return ExecutionBlock(number: val.number, base_fee_per_gas: RustString(ptr: val.base_fee_per_gas), difficulty: RustString(ptr: val.difficulty), extra_data: RustVec(ptr: val.extra_data), gas_limit: val.gas_limit, gas_used: val.gas_used, hash: RustString(ptr: val.hash), logs_bloom: RustVec(ptr: val.logs_bloom), miner: RustString(ptr: val.miner), mix_hash: RustString(ptr: val.mix_hash), nonce: RustString(ptr: val.nonce), parent_hash: RustString(ptr: val.parent_hash), receipts_root: RustString(ptr: val.receipts_root), sha3_uncles: RustString(ptr: val.sha3_uncles), size: val.size, state_root: RustString(ptr: val.state_root), timestamp: val.timestamp, total_difficulty: val.total_difficulty, transactions: val.transactions.intoSwiftRepr(), transactions_root: RustString(ptr: val.transactions_root), uncles: RustVec(ptr: val.uncles)); }()
+    func intoSwiftRepr() -> Block {
+        { let val = self; return Block(number: val.number, base_fee_per_gas: RustString(ptr: val.base_fee_per_gas), difficulty: RustString(ptr: val.difficulty), extra_data: RustVec(ptr: val.extra_data), gas_limit: val.gas_limit, gas_used: val.gas_used, hash: RustString(ptr: val.hash), logs_bloom: RustVec(ptr: val.logs_bloom), miner: RustString(ptr: val.miner), mix_hash: RustString(ptr: val.mix_hash), nonce: RustString(ptr: val.nonce), parent_hash: RustString(ptr: val.parent_hash), receipts_root: RustString(ptr: val.receipts_root), sha3_uncles: RustString(ptr: val.sha3_uncles), size: val.size, state_root: RustString(ptr: val.state_root), timestamp: val.timestamp, total_difficulty: val.total_difficulty, transactions: val.transactions.intoSwiftRepr(), transactions_root: RustString(ptr: val.transactions_root), uncles: RustVec(ptr: val.uncles)); }()
     }
 }
-extension __swift_bridge__$Option$ExecutionBlock {
+extension __swift_bridge__$Option$Block {
     @inline(__always)
-    func intoSwiftRepr() -> Optional<ExecutionBlock> {
+    func intoSwiftRepr() -> Optional<Block> {
         if self.is_some {
             return self.val.intoSwiftRepr()
         } else {
@@ -672,56 +672,11 @@ extension __swift_bridge__$Option$ExecutionBlock {
     }
 
     @inline(__always)
-    static func fromSwiftRepr(_ val: Optional<ExecutionBlock>) -> __swift_bridge__$Option$ExecutionBlock {
+    static func fromSwiftRepr(_ val: Optional<Block>) -> __swift_bridge__$Option$Block {
         if let v = val {
-            return __swift_bridge__$Option$ExecutionBlock(is_some: true, val: v.intoFfiRepr())
+            return __swift_bridge__$Option$Block(is_some: true, val: v.intoFfiRepr())
         } else {
-            return __swift_bridge__$Option$ExecutionBlock(is_some: false, val: __swift_bridge__$ExecutionBlock())
-        }
-    }
-}
-struct Header {
-    var slot: UInt64
-    var proposer_index: UInt64
-    var parent_root: RustString
-    var state_root: RustString
-    var body_root: RustString
-
-    init(slot: UInt64,proposer_index: UInt64,parent_root: RustString,state_root: RustString,body_root: RustString) {
-        self.slot = slot
-        self.proposer_index = proposer_index
-        self.parent_root = parent_root
-        self.state_root = state_root
-        self.body_root = body_root
-    }
-
-    @inline(__always)
-    func intoFfiRepr() -> __swift_bridge__$Header {
-        { let val = self; return __swift_bridge__$Header(slot: val.slot, proposer_index: val.proposer_index, parent_root: { let rustString = val.parent_root.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), state_root: { let rustString = val.state_root.intoRustString(); rustString.isOwned = false; return rustString.ptr }(), body_root: { let rustString = val.body_root.intoRustString(); rustString.isOwned = false; return rustString.ptr }()); }()
-    }
-}
-extension __swift_bridge__$Header {
-    @inline(__always)
-    func intoSwiftRepr() -> Header {
-        { let val = self; return Header(slot: val.slot, proposer_index: val.proposer_index, parent_root: RustString(ptr: val.parent_root), state_root: RustString(ptr: val.state_root), body_root: RustString(ptr: val.body_root)); }()
-    }
-}
-extension __swift_bridge__$Option$Header {
-    @inline(__always)
-    func intoSwiftRepr() -> Optional<Header> {
-        if self.is_some {
-            return self.val.intoSwiftRepr()
-        } else {
-            return nil
-        }
-    }
-
-    @inline(__always)
-    static func fromSwiftRepr(_ val: Optional<Header>) -> __swift_bridge__$Option$Header {
-        if let v = val {
-            return __swift_bridge__$Option$Header(is_some: true, val: v.intoFfiRepr())
-        } else {
-            return __swift_bridge__$Option$Header(is_some: false, val: __swift_bridge__$Header())
+            return __swift_bridge__$Option$Block(is_some: false, val: __swift_bridge__$Block())
         }
     }
 }
@@ -763,49 +718,6 @@ extension __swift_bridge__$Option$SyncingStatus {
             return __swift_bridge__$Option$SyncingStatus(is_some: true, val: v.intoFfiRepr())
         } else {
             return __swift_bridge__$Option$SyncingStatus(is_some: false, val: __swift_bridge__$SyncingStatus())
-        }
-    }
-}
-struct FeeHistory {
-    var base_fee_per_gas: RustVec<RustString>
-    var gas_used_ratio: RustVec<Double>
-    var oldest_block: UInt64
-    var reward: RustVec<RustString>
-
-    init(base_fee_per_gas: RustVec<RustString>,gas_used_ratio: RustVec<Double>,oldest_block: UInt64,reward: RustVec<RustString>) {
-        self.base_fee_per_gas = base_fee_per_gas
-        self.gas_used_ratio = gas_used_ratio
-        self.oldest_block = oldest_block
-        self.reward = reward
-    }
-
-    @inline(__always)
-    func intoFfiRepr() -> __swift_bridge__$FeeHistory {
-        { let val = self; return __swift_bridge__$FeeHistory(base_fee_per_gas: { let val = val.base_fee_per_gas; val.isOwned = false; return val.ptr }(), gas_used_ratio: { let val = val.gas_used_ratio; val.isOwned = false; return val.ptr }(), oldest_block: val.oldest_block, reward: { let val = val.reward; val.isOwned = false; return val.ptr }()); }()
-    }
-}
-extension __swift_bridge__$FeeHistory {
-    @inline(__always)
-    func intoSwiftRepr() -> FeeHistory {
-        { let val = self; return FeeHistory(base_fee_per_gas: RustVec(ptr: val.base_fee_per_gas), gas_used_ratio: RustVec(ptr: val.gas_used_ratio), oldest_block: val.oldest_block, reward: RustVec(ptr: val.reward)); }()
-    }
-}
-extension __swift_bridge__$Option$FeeHistory {
-    @inline(__always)
-    func intoSwiftRepr() -> Optional<FeeHistory> {
-        if self.is_some {
-            return self.val.intoSwiftRepr()
-        } else {
-            return nil
-        }
-    }
-
-    @inline(__always)
-    static func fromSwiftRepr(_ val: Optional<FeeHistory>) -> __swift_bridge__$Option$FeeHistory {
-        if let v = val {
-            return __swift_bridge__$Option$FeeHistory(is_some: true, val: v.intoFfiRepr())
-        } else {
-            return __swift_bridge__$Option$FeeHistory(is_some: false, val: __swift_bridge__$FeeHistory())
         }
     }
 }
@@ -1055,31 +967,31 @@ extension __swift_bridge__$Option$ResponseTransaction {
         }
     }
 }
-struct ResponseExecutionBlock {
-    var value: Optional<ExecutionBlock>
+struct ResponseBlock {
+    var value: Optional<Block>
     var failed: Bool
     var error: RustString
 
-    init(value: Optional<ExecutionBlock>,failed: Bool,error: RustString) {
+    init(value: Optional<Block>,failed: Bool,error: RustString) {
         self.value = value
         self.failed = failed
         self.error = error
     }
 
     @inline(__always)
-    func intoFfiRepr() -> __swift_bridge__$ResponseExecutionBlock {
-        { let val = self; return __swift_bridge__$ResponseExecutionBlock(value: __swift_bridge__$Option$ExecutionBlock.fromSwiftRepr(val.value), failed: val.failed, error: { let rustString = val.error.intoRustString(); rustString.isOwned = false; return rustString.ptr }()); }()
+    func intoFfiRepr() -> __swift_bridge__$ResponseBlock {
+        { let val = self; return __swift_bridge__$ResponseBlock(value: __swift_bridge__$Option$Block.fromSwiftRepr(val.value), failed: val.failed, error: { let rustString = val.error.intoRustString(); rustString.isOwned = false; return rustString.ptr }()); }()
     }
 }
-extension __swift_bridge__$ResponseExecutionBlock {
+extension __swift_bridge__$ResponseBlock {
     @inline(__always)
-    func intoSwiftRepr() -> ResponseExecutionBlock {
-        { let val = self; return ResponseExecutionBlock(value: val.value.intoSwiftRepr(), failed: val.failed, error: RustString(ptr: val.error)); }()
+    func intoSwiftRepr() -> ResponseBlock {
+        { let val = self; return ResponseBlock(value: val.value.intoSwiftRepr(), failed: val.failed, error: RustString(ptr: val.error)); }()
     }
 }
-extension __swift_bridge__$Option$ResponseExecutionBlock {
+extension __swift_bridge__$Option$ResponseBlock {
     @inline(__always)
-    func intoSwiftRepr() -> Optional<ResponseExecutionBlock> {
+    func intoSwiftRepr() -> Optional<ResponseBlock> {
         if self.is_some {
             return self.val.intoSwiftRepr()
         } else {
@@ -1088,52 +1000,11 @@ extension __swift_bridge__$Option$ResponseExecutionBlock {
     }
 
     @inline(__always)
-    static func fromSwiftRepr(_ val: Optional<ResponseExecutionBlock>) -> __swift_bridge__$Option$ResponseExecutionBlock {
+    static func fromSwiftRepr(_ val: Optional<ResponseBlock>) -> __swift_bridge__$Option$ResponseBlock {
         if let v = val {
-            return __swift_bridge__$Option$ResponseExecutionBlock(is_some: true, val: v.intoFfiRepr())
+            return __swift_bridge__$Option$ResponseBlock(is_some: true, val: v.intoFfiRepr())
         } else {
-            return __swift_bridge__$Option$ResponseExecutionBlock(is_some: false, val: __swift_bridge__$ResponseExecutionBlock())
-        }
-    }
-}
-struct ResponseHeader {
-    var value: Optional<Header>
-    var failed: Bool
-    var error: RustString
-
-    init(value: Optional<Header>,failed: Bool,error: RustString) {
-        self.value = value
-        self.failed = failed
-        self.error = error
-    }
-
-    @inline(__always)
-    func intoFfiRepr() -> __swift_bridge__$ResponseHeader {
-        { let val = self; return __swift_bridge__$ResponseHeader(value: __swift_bridge__$Option$Header.fromSwiftRepr(val.value), failed: val.failed, error: { let rustString = val.error.intoRustString(); rustString.isOwned = false; return rustString.ptr }()); }()
-    }
-}
-extension __swift_bridge__$ResponseHeader {
-    @inline(__always)
-    func intoSwiftRepr() -> ResponseHeader {
-        { let val = self; return ResponseHeader(value: val.value.intoSwiftRepr(), failed: val.failed, error: RustString(ptr: val.error)); }()
-    }
-}
-extension __swift_bridge__$Option$ResponseHeader {
-    @inline(__always)
-    func intoSwiftRepr() -> Optional<ResponseHeader> {
-        if self.is_some {
-            return self.val.intoSwiftRepr()
-        } else {
-            return nil
-        }
-    }
-
-    @inline(__always)
-    static func fromSwiftRepr(_ val: Optional<ResponseHeader>) -> __swift_bridge__$Option$ResponseHeader {
-        if let v = val {
-            return __swift_bridge__$Option$ResponseHeader(is_some: true, val: v.intoFfiRepr())
-        } else {
-            return __swift_bridge__$Option$ResponseHeader(is_some: false, val: __swift_bridge__$ResponseHeader())
+            return __swift_bridge__$Option$ResponseBlock(is_some: false, val: __swift_bridge__$ResponseBlock())
         }
     }
 }
@@ -1175,47 +1046,6 @@ extension __swift_bridge__$Option$ResponseSyncing {
             return __swift_bridge__$Option$ResponseSyncing(is_some: true, val: v.intoFfiRepr())
         } else {
             return __swift_bridge__$Option$ResponseSyncing(is_some: false, val: __swift_bridge__$ResponseSyncing())
-        }
-    }
-}
-struct ResponseFeeHistory {
-    var value: Optional<FeeHistory>
-    var failed: Bool
-    var error: RustString
-
-    init(value: Optional<FeeHistory>,failed: Bool,error: RustString) {
-        self.value = value
-        self.failed = failed
-        self.error = error
-    }
-
-    @inline(__always)
-    func intoFfiRepr() -> __swift_bridge__$ResponseFeeHistory {
-        { let val = self; return __swift_bridge__$ResponseFeeHistory(value: __swift_bridge__$Option$FeeHistory.fromSwiftRepr(val.value), failed: val.failed, error: { let rustString = val.error.intoRustString(); rustString.isOwned = false; return rustString.ptr }()); }()
-    }
-}
-extension __swift_bridge__$ResponseFeeHistory {
-    @inline(__always)
-    func intoSwiftRepr() -> ResponseFeeHistory {
-        { let val = self; return ResponseFeeHistory(value: val.value.intoSwiftRepr(), failed: val.failed, error: RustString(ptr: val.error)); }()
-    }
-}
-extension __swift_bridge__$Option$ResponseFeeHistory {
-    @inline(__always)
-    func intoSwiftRepr() -> Optional<ResponseFeeHistory> {
-        if self.is_some {
-            return self.val.intoSwiftRepr()
-        } else {
-            return nil
-        }
-    }
-
-    @inline(__always)
-    static func fromSwiftRepr(_ val: Optional<ResponseFeeHistory>) -> __swift_bridge__$Option$ResponseFeeHistory {
-        if let v = val {
-            return __swift_bridge__$Option$ResponseFeeHistory(is_some: true, val: v.intoFfiRepr())
-        } else {
-            return __swift_bridge__$Option$ResponseFeeHistory(is_some: false, val: __swift_bridge__$ResponseFeeHistory())
         }
     }
 }
@@ -1452,38 +1282,13 @@ extension HeliosClientRef {
         }
     }
 
-    func get_fee_history(_ block_count: UInt64, _ last_block: UInt64, _ reward_percentiles: RustVec<Double>) async -> ResponseFeeHistory {
-        func onComplete(cbWrapperPtr: UnsafeMutableRawPointer?, rustFnRetVal: __swift_bridge__$ResponseFeeHistory) {
-            let wrapper = Unmanaged<CbWrapper$HeliosClient$get_fee_history>.fromOpaque(cbWrapperPtr!).takeRetainedValue()
-            wrapper.cb(.success(rustFnRetVal.intoSwiftRepr()))
-        }
-
-        return await withCheckedContinuation({ (continuation: CheckedContinuation<ResponseFeeHistory, Never>) in
-            let callback = { rustFnRetVal in
-                continuation.resume(with: rustFnRetVal)
-            }
-
-            let wrapper = CbWrapper$HeliosClient$get_fee_history(cb: callback)
-            let wrapperPtr = Unmanaged.passRetained(wrapper).toOpaque()
-
-            __swift_bridge__$HeliosClient$get_fee_history(wrapperPtr, onComplete, ptr, block_count, last_block, { let val = reward_percentiles; val.isOwned = false; return val.ptr }())
-        })
-    }
-    class CbWrapper$HeliosClient$get_fee_history {
-        var cb: (Result<ResponseFeeHistory, Never>) -> ()
-    
-        init(cb: @escaping (Result<ResponseFeeHistory, Never>) -> ()) {
-            self.cb = cb
-        }
-    }
-
-    func get_block_number() async -> ResponseU64 {
-        func onComplete(cbWrapperPtr: UnsafeMutableRawPointer?, rustFnRetVal: __swift_bridge__$ResponseU64) {
+    func get_block_number() async -> ResponseString {
+        func onComplete(cbWrapperPtr: UnsafeMutableRawPointer?, rustFnRetVal: __swift_bridge__$ResponseString) {
             let wrapper = Unmanaged<CbWrapper$HeliosClient$get_block_number>.fromOpaque(cbWrapperPtr!).takeRetainedValue()
             wrapper.cb(.success(rustFnRetVal.intoSwiftRepr()))
         }
 
-        return await withCheckedContinuation({ (continuation: CheckedContinuation<ResponseU64, Never>) in
+        return await withCheckedContinuation({ (continuation: CheckedContinuation<ResponseString, Never>) in
             let callback = { rustFnRetVal in
                 continuation.resume(with: rustFnRetVal)
             }
@@ -1495,9 +1300,9 @@ extension HeliosClientRef {
         })
     }
     class CbWrapper$HeliosClient$get_block_number {
-        var cb: (Result<ResponseU64, Never>) -> ()
+        var cb: (Result<ResponseString, Never>) -> ()
     
-        init(cb: @escaping (Result<ResponseU64, Never>) -> ()) {
+        init(cb: @escaping (Result<ResponseString, Never>) -> ()) {
             self.cb = cb
         }
     }
@@ -1577,13 +1382,13 @@ extension HeliosClientRef {
         }
     }
 
-    func get_block_by_number(_ block: BlockTag, _ full_tx: Bool) async -> ResponseExecutionBlock {
-        func onComplete(cbWrapperPtr: UnsafeMutableRawPointer?, rustFnRetVal: __swift_bridge__$ResponseExecutionBlock) {
+    func get_block_by_number(_ block: BlockTag, _ full_tx: Bool) async -> ResponseBlock {
+        func onComplete(cbWrapperPtr: UnsafeMutableRawPointer?, rustFnRetVal: __swift_bridge__$ResponseBlock) {
             let wrapper = Unmanaged<CbWrapper$HeliosClient$get_block_by_number>.fromOpaque(cbWrapperPtr!).takeRetainedValue()
             wrapper.cb(.success(rustFnRetVal.intoSwiftRepr()))
         }
 
-        return await withCheckedContinuation({ (continuation: CheckedContinuation<ResponseExecutionBlock, Never>) in
+        return await withCheckedContinuation({ (continuation: CheckedContinuation<ResponseBlock, Never>) in
             let callback = { rustFnRetVal in
                 continuation.resume(with: rustFnRetVal)
             }
@@ -1595,20 +1400,20 @@ extension HeliosClientRef {
         })
     }
     class CbWrapper$HeliosClient$get_block_by_number {
-        var cb: (Result<ResponseExecutionBlock, Never>) -> ()
+        var cb: (Result<ResponseBlock, Never>) -> ()
     
-        init(cb: @escaping (Result<ResponseExecutionBlock, Never>) -> ()) {
+        init(cb: @escaping (Result<ResponseBlock, Never>) -> ()) {
             self.cb = cb
         }
     }
 
-    func get_block_by_hash<GenericIntoRustString: IntoRustString>(_ hash: GenericIntoRustString, _ full_tx: Bool) async -> ResponseExecutionBlock {
-        func onComplete(cbWrapperPtr: UnsafeMutableRawPointer?, rustFnRetVal: __swift_bridge__$ResponseExecutionBlock) {
+    func get_block_by_hash<GenericIntoRustString: IntoRustString>(_ hash: GenericIntoRustString, _ full_tx: Bool) async -> ResponseBlock {
+        func onComplete(cbWrapperPtr: UnsafeMutableRawPointer?, rustFnRetVal: __swift_bridge__$ResponseBlock) {
             let wrapper = Unmanaged<CbWrapper$HeliosClient$get_block_by_hash>.fromOpaque(cbWrapperPtr!).takeRetainedValue()
             wrapper.cb(.success(rustFnRetVal.intoSwiftRepr()))
         }
 
-        return await withCheckedContinuation({ (continuation: CheckedContinuation<ResponseExecutionBlock, Never>) in
+        return await withCheckedContinuation({ (continuation: CheckedContinuation<ResponseBlock, Never>) in
             let callback = { rustFnRetVal in
                 continuation.resume(with: rustFnRetVal)
             }
@@ -1620,9 +1425,9 @@ extension HeliosClientRef {
         })
     }
     class CbWrapper$HeliosClient$get_block_by_hash {
-        var cb: (Result<ResponseExecutionBlock, Never>) -> ()
+        var cb: (Result<ResponseBlock, Never>) -> ()
     
-        init(cb: @escaping (Result<ResponseExecutionBlock, Never>) -> ()) {
+        init(cb: @escaping (Result<ResponseBlock, Never>) -> ()) {
             self.cb = cb
         }
     }
@@ -1727,7 +1532,7 @@ extension HeliosClientRef {
         }
     }
 
-    func get_transaction_by_block_hash_and_index<GenericIntoRustString: IntoRustString>(_ block_hash: GenericIntoRustString, _ index: UInt) async -> ResponseTransaction {
+    func get_transaction_by_block_hash_and_index<GenericIntoRustString: IntoRustString>(_ block_hash: GenericIntoRustString, _ index: UInt64) async -> ResponseTransaction {
         func onComplete(cbWrapperPtr: UnsafeMutableRawPointer?, rustFnRetVal: __swift_bridge__$ResponseTransaction) {
             let wrapper = Unmanaged<CbWrapper$HeliosClient$get_transaction_by_block_hash_and_index>.fromOpaque(cbWrapperPtr!).takeRetainedValue()
             wrapper.cb(.success(rustFnRetVal.intoSwiftRepr()))
@@ -1823,31 +1628,6 @@ extension HeliosClientRef {
         var cb: (Result<ResponseString, Never>) -> ()
     
         init(cb: @escaping (Result<ResponseString, Never>) -> ()) {
-            self.cb = cb
-        }
-    }
-
-    func get_header() async -> ResponseHeader {
-        func onComplete(cbWrapperPtr: UnsafeMutableRawPointer?, rustFnRetVal: __swift_bridge__$ResponseHeader) {
-            let wrapper = Unmanaged<CbWrapper$HeliosClient$get_header>.fromOpaque(cbWrapperPtr!).takeRetainedValue()
-            wrapper.cb(.success(rustFnRetVal.intoSwiftRepr()))
-        }
-
-        return await withCheckedContinuation({ (continuation: CheckedContinuation<ResponseHeader, Never>) in
-            let callback = { rustFnRetVal in
-                continuation.resume(with: rustFnRetVal)
-            }
-
-            let wrapper = CbWrapper$HeliosClient$get_header(cb: callback)
-            let wrapperPtr = Unmanaged.passRetained(wrapper).toOpaque()
-
-            __swift_bridge__$HeliosClient$get_header(wrapperPtr, onComplete, ptr)
-        })
-    }
-    class CbWrapper$HeliosClient$get_header {
-        var cb: (Result<ResponseHeader, Never>) -> ()
-    
-        init(cb: @escaping (Result<ResponseHeader, Never>) -> ()) {
             self.cb = cb
         }
     }

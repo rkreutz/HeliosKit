@@ -97,7 +97,7 @@ public final class Helios {
     ///   - callOptions: the call options of the call
     ///   - block: the block at which the call should be done against
     /// - Returns: the data of the call
-    public func call(callOptions: EVMCallOptions, at block: Block = .latest) async throws -> Data {
+    public func call(callOptions: EVMCallOptions, at block: EVMBlock = .latest) async throws -> Data {
         let response = await client.call(callOptions.asCallOpts(), block.asBlockTag())
         return try response.extractValue()
     }
@@ -139,28 +139,9 @@ public final class Helios {
         return try response.extractValue()
     }
 
-    /// Gets the fee history for a given block range.
-    ///
-    /// - Parameters:
-    ///   - latestBlock: the most recent block in the block range
-    ///   - numberOfPastBlocks: the number of blocks before the latest block that should be queried for the fee history.
-    ///   - rewardPercentiles: a monotonically increasing list of percentile values to sample from each block's effective priority fees per gas in ascending order, weighted by gas used.
-    /// - Returns: the fee history for the given block range.
-    public func getFeeHistory(fromBlock latestBlock: UInt64, numberOfPastBlocks: UInt64, rewardPercentiles: [Double] = []) async throws -> EVMFeeHistory {
-        let rewardVec = RustVec<Double>()
-        for percentile in rewardPercentiles {
-            rewardVec.push(value: percentile)
-        }
-        let response = await client.get_fee_history(numberOfPastBlocks, latestBlock, rewardVec)
-        guard let feeHistory = try response.extractValue() else {
-            throw HeliosError.feeHistoryUnavailable
-        }
-        return feeHistory
-    }
-
     /// Returns the current block height
     /// - Returns: the block height of the network
-    public func getBlockNumber() async throws -> UInt64 {
+    public func getBlockNumber() async throws -> String {
         let response = await client.get_block_number()
         return try response.extractValue()
     }
@@ -177,7 +158,7 @@ public final class Helios {
     ///   - address: the address to check the balance
     ///   - block: the block at which we want to check address balance
     /// - Returns: the address' balance on base 10 format (decimal)
-    public func getBalance(of address: String, at block: Block = .latest) async throws -> String {
+    public func getBalance(of address: String, at block: EVMBlock = .latest) async throws -> String {
         let response = await client.get_balance(address.intoRustString(), block.asBlockTag())
         return try response.extractValue()
     }
@@ -187,7 +168,7 @@ public final class Helios {
     ///   - address: the address to check the nonce
     ///   - block: the block at which we want to check address nonce
     /// - Returns: the address' nonce
-    public func getNonce(of address: String, at block: Block = .latest) async throws -> UInt64 {
+    public func getNonce(of address: String, at block: EVMBlock = .latest) async throws -> UInt64 {
         let response = await client.get_nonce(address.intoRustString(), block.asBlockTag())
         return try response.extractValue()
     }
@@ -197,7 +178,7 @@ public final class Helios {
     ///   - block: the block to fetch
     ///   - shouldIncludeTransactions: whether it should include the fully fledged transaction objects or just the transaction hashes.
     /// - Returns: the block details
-    public func getBlock(_ block: Block, shouldIncludeTransactions: Bool = false) async throws -> EVMExecutionBlock {
+    public func getBlock(_ block: EVMBlock, shouldIncludeTransactions: Bool = false) async throws -> EVMExecutionBlock {
         let response = await client.get_block_by_number(block.asBlockTag(), shouldIncludeTransactions)
         let block = try response.extractValue()
         guard let block = block else { throw HeliosError.executionBlockUnavailable }
@@ -227,7 +208,7 @@ public final class Helios {
     /// Gets the number of transactions that happened on a given block.
     /// - Parameter block: the block to check for number of transactions.
     /// - Returns: the number of transactions in the given block.
-    public func getBlockTransactionCount(at block: Block) async throws -> UInt64 {
+    public func getBlockTransactionCount(at block: EVMBlock) async throws -> UInt64 {
         let response = await client.get_block_transaction_count_by_number(block.asBlockTag())
         return try response.extractValue()
     }
@@ -257,7 +238,7 @@ public final class Helios {
     ///   - blockHash: the block's hash
     ///   - index: the index of the transaction in the given block
     /// - Returns: the transaction details
-    public func getTransaction(inBlock blockHash: String, atIndex index: UInt) async throws -> EVMTransaction {
+    public func getTransaction(inBlock blockHash: String, atIndex index: UInt64) async throws -> EVMTransaction {
         let response = await client.get_transaction_by_block_hash_and_index(blockHash, index)
         let transaction = try response.extractValue()
         guard let transaction = transaction else { throw HeliosError.transactionUnavailable }
@@ -272,8 +253,8 @@ public final class Helios {
     ///   - topics: optional topics to filter the logs
     /// - Returns: an array of logs
     public func getLogs(
-        from fromBlock: Block? = nil,
-        to toBlock: Block? = nil,
+        from fromBlock: EVMBlock? = nil,
+        to toBlock: EVMBlock? = nil,
         address: String? = nil,
         topics: [String]? = nil
     ) async throws -> [EVMLog] {
@@ -333,7 +314,7 @@ public final class Helios {
     ///   - address: the address of the smart contract.
     ///   - block: the block at which the query should be done on.
     /// - Returns: the bytecode data. If the address is not a smart contract it returns a 0 byte `Data`.
-    public func getCode(for address: String, at block: Block = .latest) async throws -> Data {
+    public func getCode(for address: String, at block: EVMBlock = .latest) async throws -> Data {
         let response = await client.get_code(address.intoRustString(), block.asBlockTag())
         return try response.extractValue()
     }
@@ -344,18 +325,9 @@ public final class Helios {
     ///   - slot: the storage slot
     ///   - block: the block at which the query should be done on.
     /// - Returns: the storage value on base 16 (hexadecimal)
-    public func getStorage(for address: String, atSlot slot: String, block: Block = .latest) async throws -> String {
+    public func getStorage(for address: String, atSlot slot: String, block: EVMBlock = .latest) async throws -> String {
         let response = await client.get_storage_at(address.intoRustString(), slot.intoRustString(), block.asBlockTag())
         return try response.extractValue()
-    }
-
-    /// Gets the current header
-    /// - Returns: the header
-    public func getHeader() async throws -> EVMHeader {
-        let response = await client.get_header()
-        let header = try response.extractValue()
-        guard let header = header else { throw HeliosError.headerUnavailable }
-        return header
     }
 
     /// Gets the current sync status of the light client
@@ -363,6 +335,15 @@ public final class Helios {
     public func syncing() async throws -> EVMSyncStatus {
         let response = await client.syncing()
         return try response.extractValue()
+    }
+    
+    /// Suspends the current task until the light client is synced.
+    ///
+    /// This will keep polling the current syncing state with a time period of 100ms.
+    public func waitUntilSynced() async throws {
+        while case .syncing = try await syncing() {
+            try await Task.sleep(nanoseconds: UInt64(10e8))
+        }
     }
 
     /// Shuts down the client

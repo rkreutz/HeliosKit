@@ -1,12 +1,12 @@
 import Foundation
 
-public enum Block {
+public enum EVMBlock {
     case latest
     case finalized
     case custom(UInt64)
 }
 
-extension Block {
+extension EVMBlock {
     func asBlockTag() -> BlockTag {
         switch self {
         case .latest: return .Latest

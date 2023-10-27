@@ -30,7 +30,7 @@ public struct EVMExecutionBlock: Equatable {
 }
 
 extension EVMExecutionBlock {
-    init(from block: ExecutionBlock) {
+    init(from block: Block) {
         self.init(
             number: block.number,
             baseFeePerGas: block.base_fee_per_gas.toString(),

@@ -56,16 +56,6 @@ extension ResponseTransactionReceipt: ValueExtractable {
     }
 }
 
-extension ResponseHeader: ValueExtractable {
-    func extractValue() throws -> EVMHeader? {
-        if failed {
-            throw HeliosError.failed(error.toString())
-        } else {
-            return value.map(EVMHeader.init(from:))
-        }
-    }
-}
-
 extension ResponseTransaction: ValueExtractable {
     func extractValue() throws -> EVMTransaction? {
         if failed {
@@ -76,7 +66,7 @@ extension ResponseTransaction: ValueExtractable {
     }
 }
 
-extension ResponseExecutionBlock: ValueExtractable {
+extension ResponseBlock: ValueExtractable {
     func extractValue() throws -> EVMExecutionBlock? {
         if failed {
             throw HeliosError.failed(error.toString())
@@ -102,16 +92,6 @@ extension ResponseSyncing: ValueExtractable {
             } else {
                 return .synced
             }
-        }
-    }
-}
-
-extension ResponseFeeHistory: ValueExtractable {
-    func extractValue() throws -> EVMFeeHistory? {
-        if failed {
-            throw HeliosError.failed(error.toString())
-        } else {
-            return value.map(EVMFeeHistory.init(from:))
         }
     }
 }
