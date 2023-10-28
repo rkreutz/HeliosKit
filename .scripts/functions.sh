@@ -42,6 +42,11 @@ env::setup() {
     export SWIFT_BRIDGE_FEATURES=${SWIFT_BRIDGE_FEATURES:-'["async"]'}
     log::info "SWIFT_BRIDGE_FEATURES=$SWIFT_BRIDGE_FEATURES"
     export SWIFT_BRIDGE_OUT_DIR="$HELIOS_DIRECTORY/generated"
+    log::info "SWIFT_BRIDGE_OUT_DIR=$SWIFT_BRIDGE_OUT_DIR"
+    export USES_LOGGER=${USES_LOGGER:-true}
+    log::info "USES_LOGGER=$USES_LOGGER"
+    export USES_TRACING=${USES_TRACING:-false}
+    log::info "USES_TRACING=$USES_TRACING"
 }
 
 env::build_configuration() {
@@ -118,19 +123,27 @@ pre_build::modify_helios() {
     # Add other dependencies
     sed -i '' '/^[[]dependencies[]]/a\'$'\n''hex = "0.4.3"'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
     sed -i '' '/^[[]dependencies[]]/a\'$'\n''ethers = "'$ETHERS_VERSION'"'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
-    sed -i '' '/^[[]dependencies[]]/a\'$'\n''env_logger = "0.9.0"'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
+    if [ $USES_LOGGER = true ]; then
+        sed -i '' '/^[[]dependencies[]]/a\'$'\n''env_logger = "0.9.0"'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
+    fi
+    if [ $USES_TRACING = true ]; then
+        sed -i '' '/^[[]dependencies[]]/a\'$'\n''tracing-subscriber = { version = "0.3.17", features = ["env-filter"] }'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
+        sed -i '' '/^[[]dependencies[]]/a\'$'\n''tracing.workspace = true'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
+    fi
     sed -i '' '/^[[]dependencies[]]/a\'$'\n''eyre = "0.6"'$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
 
     # This PR regressed builds on iOS: https://github.com/a16z/helios/pull/160
     # It would cause an error, "duplicate lang item in crate `core`: `sized`".
     sed -i '' "s/^panic = \"abort\"$//" "$HELIOS_DIRECTORY/Cargo.toml"
 
-    # Modify/Add OpenSSL patch
-    if grep -q "[[]patch[.]crates-io[]]" "$HELIOS_DIRECTORY/Cargo.toml"; then
-        sed -i '' '/^[[]patch.crates-io[]]/a\'$'\n'"openssl-sys = { path = \"$OPENSSL_DIRECTORY/openssl-sys\" }"$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
-    else
-        echo "\n[patch.crates-io]" >> "$HELIOS_DIRECTORY/Cargo.toml"
-        echo "openssl-sys = { path = \"$OPENSSL_DIRECTORY/openssl-sys\" }" >> "$HELIOS_DIRECTORY/Cargo.toml"
+    if [ -d $OPENSSL_DIRECTORY ]; then
+        # Modify/Add OpenSSL patch
+        if grep -q "[[]patch[.]crates-io[]]" "$HELIOS_DIRECTORY/Cargo.toml"; then
+            sed -i '' '/^[[]patch.crates-io[]]/a\'$'\n'"openssl-sys = { path = \"$OPENSSL_DIRECTORY/openssl-sys\" }"$'\n' "$HELIOS_DIRECTORY/Cargo.toml"
+        else
+            echo "\n[patch.crates-io]" >> "$HELIOS_DIRECTORY/Cargo.toml"
+            echo "openssl-sys = { path = \"$OPENSSL_DIRECTORY/openssl-sys\" }" >> "$HELIOS_DIRECTORY/Cargo.toml"
+        fi
     fi
 
     # Change crate to lib
@@ -170,7 +183,7 @@ rust::build_target() {
         log::error 'Must specify target as input to rust::build_target'
         exit -1
     fi
-    cargo +$RUST_TOOLCHAIN build $([[ $1 = "aarch64-apple-ios-sim" ]] && echo "-Z build-std") --lib --package helios --target $1 $([[ $BUILD_CONFIG = "release" ]] && echo --release)
+    cargo +$RUST_TOOLCHAIN build $([[ $1 = "aarch64-apple-ios-sim" ]] && [[ $RUST_TOOLCHAIN == "nightly"* ]] && echo "-Z build-std") --lib --package helios --target $1 $([[ $BUILD_CONFIG = "release" ]] && echo --release)
 }
 
 rust::build_ios() {
