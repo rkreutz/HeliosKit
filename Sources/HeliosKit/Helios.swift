@@ -7,10 +7,11 @@ public final class Helios {
     public static let defaultDataDirectory: URL? = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
 
     private enum Constants {
+        static let ip: String = "127.0.0.1"
         static let port: UInt16 = 8545
     }
 
-    public var clientURL: URL { URL(string: "http://127.0.0.1:\(Constants.port)").unsafelyUnwrapped }
+    public var clientURL: URL { URL(string: "http://\(Constants.ip):\(Constants.port)").unsafelyUnwrapped }
 
     private let client: HeliosClient = .init()
 
@@ -52,6 +53,7 @@ public final class Helios {
             rpcURL.absoluteString,
             consensusURL.absoluteString,
             _checkpoint,
+            Constants.ip,
             Constants.port,
             network.asHeliosNetwork(),
             dataDirectoryPath
