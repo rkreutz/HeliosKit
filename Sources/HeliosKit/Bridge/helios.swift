@@ -10,38 +10,38 @@ enum BlockTag {
 extension BlockTag {
     func intoFfiRepr() -> __swift_bridge__$BlockTag {
         switch self {
-            case BlockTag.Latest:
-                return {var val = __swift_bridge__$BlockTag(); val.tag = __swift_bridge__$BlockTag$Latest; return val }()
-            case BlockTag.Finalized:
-                return {var val = __swift_bridge__$BlockTag(); val.tag = __swift_bridge__$BlockTag$Finalized; return val }()
-            case BlockTag.Safe:
-                return {var val = __swift_bridge__$BlockTag(); val.tag = __swift_bridge__$BlockTag$Safe; return val }()
-            case BlockTag.Earliest:
-                return {var val = __swift_bridge__$BlockTag(); val.tag = __swift_bridge__$BlockTag$Earliest; return val }()
-            case BlockTag.Pending:
-                return {var val = __swift_bridge__$BlockTag(); val.tag = __swift_bridge__$BlockTag$Pending; return val }()
-            case BlockTag.Number(let _0):
-                return __swift_bridge__$BlockTag(tag: __swift_bridge__$BlockTag$Number, payload: __swift_bridge__$BlockTagFields(Number: __swift_bridge__$BlockTag$FieldOfNumber(_0: _0)))
+        case BlockTag.Latest:
+            return {var val = __swift_bridge__$BlockTag(); val.tag = __swift_bridge__$BlockTag$Latest; return val }()
+        case BlockTag.Finalized:
+            return {var val = __swift_bridge__$BlockTag(); val.tag = __swift_bridge__$BlockTag$Finalized; return val }()
+        case BlockTag.Safe:
+            return {var val = __swift_bridge__$BlockTag(); val.tag = __swift_bridge__$BlockTag$Safe; return val }()
+        case BlockTag.Earliest:
+            return {var val = __swift_bridge__$BlockTag(); val.tag = __swift_bridge__$BlockTag$Earliest; return val }()
+        case BlockTag.Pending:
+            return {var val = __swift_bridge__$BlockTag(); val.tag = __swift_bridge__$BlockTag$Pending; return val }()
+        case BlockTag.Number(let _0):
+            return __swift_bridge__$BlockTag(tag: __swift_bridge__$BlockTag$Number, payload: __swift_bridge__$BlockTagFields(Number: __swift_bridge__$BlockTag$FieldOfNumber(_0: _0)))
         }
     }
 }
 extension __swift_bridge__$BlockTag {
     func intoSwiftRepr() -> BlockTag {
         switch self.tag {
-            case __swift_bridge__$BlockTag$Latest:
-                return BlockTag.Latest
-            case __swift_bridge__$BlockTag$Finalized:
-                return BlockTag.Finalized
-            case __swift_bridge__$BlockTag$Safe:
-                return BlockTag.Safe
-            case __swift_bridge__$BlockTag$Earliest:
-                return BlockTag.Earliest
-            case __swift_bridge__$BlockTag$Pending:
-                return BlockTag.Pending
-            case __swift_bridge__$BlockTag$Number:
-                return BlockTag.Number(self.payload.Number._0)
-            default:
-                fatalError("Unreachable")
+        case __swift_bridge__$BlockTag$Latest:
+            return BlockTag.Latest
+        case __swift_bridge__$BlockTag$Finalized:
+            return BlockTag.Finalized
+        case __swift_bridge__$BlockTag$Safe:
+            return BlockTag.Safe
+        case __swift_bridge__$BlockTag$Earliest:
+            return BlockTag.Earliest
+        case __swift_bridge__$BlockTag$Pending:
+            return BlockTag.Pending
+        case __swift_bridge__$BlockTag$Number:
+            return BlockTag.Number(self.payload.Number._0)
+        default:
+            fatalError("Unreachable")
         }
     }
 }
@@ -113,26 +113,31 @@ extension __swift_bridge__$Option$CallOpts {
 enum HeliosNetwork {
     case MAINNET
     case GOERLI
+    case SEPOLIA
 }
 extension HeliosNetwork {
     func intoFfiRepr() -> __swift_bridge__$HeliosNetwork {
         switch self {
-            case HeliosNetwork.MAINNET:
-                return __swift_bridge__$HeliosNetwork(tag: __swift_bridge__$HeliosNetwork$MAINNET)
-            case HeliosNetwork.GOERLI:
-                return __swift_bridge__$HeliosNetwork(tag: __swift_bridge__$HeliosNetwork$GOERLI)
+        case HeliosNetwork.MAINNET:
+            return __swift_bridge__$HeliosNetwork(tag: __swift_bridge__$HeliosNetwork$MAINNET)
+        case HeliosNetwork.GOERLI:
+            return __swift_bridge__$HeliosNetwork(tag: __swift_bridge__$HeliosNetwork$GOERLI)
+        case HeliosNetwork.SEPOLIA:
+            return __swift_bridge__$HeliosNetwork(tag: __swift_bridge__$HeliosNetwork$SEPOLIA)
         }
     }
 }
 extension __swift_bridge__$HeliosNetwork {
     func intoSwiftRepr() -> HeliosNetwork {
         switch self.tag {
-            case __swift_bridge__$HeliosNetwork$MAINNET:
-                return HeliosNetwork.MAINNET
-            case __swift_bridge__$HeliosNetwork$GOERLI:
-                return HeliosNetwork.GOERLI
-            default:
-                fatalError("Unreachable")
+        case __swift_bridge__$HeliosNetwork$MAINNET:
+            return HeliosNetwork.MAINNET
+        case __swift_bridge__$HeliosNetwork$GOERLI:
+            return HeliosNetwork.GOERLI
+        case __swift_bridge__$HeliosNetwork$SEPOLIA:
+            return HeliosNetwork.SEPOLIA
+        default:
+            fatalError("Unreachable")
         }
     }
 }
@@ -232,22 +237,22 @@ enum FilterBlockOption {
 extension FilterBlockOption {
     func intoFfiRepr() -> __swift_bridge__$FilterBlockOption {
         switch self {
-            case FilterBlockOption.Range(let from_block, let to_block):
-                return __swift_bridge__$FilterBlockOption(tag: __swift_bridge__$FilterBlockOption$Range, payload: __swift_bridge__$FilterBlockOptionFields(Range: __swift_bridge__$FilterBlockOption$FieldOfRange(from_block: __swift_bridge__$Option$BlockTag.fromSwiftRepr(from_block), to_block: __swift_bridge__$Option$BlockTag.fromSwiftRepr(to_block))))
-            case FilterBlockOption.AtBlockHash(let _0):
-                return __swift_bridge__$FilterBlockOption(tag: __swift_bridge__$FilterBlockOption$AtBlockHash, payload: __swift_bridge__$FilterBlockOptionFields(AtBlockHash: __swift_bridge__$FilterBlockOption$FieldOfAtBlockHash(_0: { let rustString = _0.intoRustString(); rustString.isOwned = false; return rustString.ptr }())))
+        case FilterBlockOption.Range(let from_block, let to_block):
+            return __swift_bridge__$FilterBlockOption(tag: __swift_bridge__$FilterBlockOption$Range, payload: __swift_bridge__$FilterBlockOptionFields(Range: __swift_bridge__$FilterBlockOption$FieldOfRange(from_block: __swift_bridge__$Option$BlockTag.fromSwiftRepr(from_block), to_block: __swift_bridge__$Option$BlockTag.fromSwiftRepr(to_block))))
+        case FilterBlockOption.AtBlockHash(let _0):
+            return __swift_bridge__$FilterBlockOption(tag: __swift_bridge__$FilterBlockOption$AtBlockHash, payload: __swift_bridge__$FilterBlockOptionFields(AtBlockHash: __swift_bridge__$FilterBlockOption$FieldOfAtBlockHash(_0: { let rustString = _0.intoRustString(); rustString.isOwned = false; return rustString.ptr }())))
         }
     }
 }
 extension __swift_bridge__$FilterBlockOption {
     func intoSwiftRepr() -> FilterBlockOption {
         switch self.tag {
-            case __swift_bridge__$FilterBlockOption$Range:
-                return FilterBlockOption.Range(from_block: self.payload.Range.from_block.intoSwiftRepr(), to_block: self.payload.Range.to_block.intoSwiftRepr())
-            case __swift_bridge__$FilterBlockOption$AtBlockHash:
-                return FilterBlockOption.AtBlockHash(RustString(ptr: self.payload.AtBlockHash._0))
-            default:
-                fatalError("Unreachable")
+        case __swift_bridge__$FilterBlockOption$Range:
+            return FilterBlockOption.Range(from_block: self.payload.Range.from_block.intoSwiftRepr(), to_block: self.payload.Range.to_block.intoSwiftRepr())
+        case __swift_bridge__$FilterBlockOption$AtBlockHash:
+            return FilterBlockOption.AtBlockHash(RustString(ptr: self.payload.AtBlockHash._0))
+        default:
+            fatalError("Unreachable")
         }
     }
 }
@@ -566,22 +571,22 @@ enum Transactions {
 extension Transactions {
     func intoFfiRepr() -> __swift_bridge__$Transactions {
         switch self {
-            case Transactions.Hashes(let _0):
-                return __swift_bridge__$Transactions(tag: __swift_bridge__$Transactions$Hashes, payload: __swift_bridge__$TransactionsFields(Hashes: __swift_bridge__$Transactions$FieldOfHashes(_0: { let val = _0; val.isOwned = false; return val.ptr }())))
-            case Transactions.Full(let _0):
-                return __swift_bridge__$Transactions(tag: __swift_bridge__$Transactions$Full, payload: __swift_bridge__$TransactionsFields(Full: __swift_bridge__$Transactions$FieldOfFull(_0: { let val = _0; val.isOwned = false; return val.ptr }())))
+        case Transactions.Hashes(let _0):
+            return __swift_bridge__$Transactions(tag: __swift_bridge__$Transactions$Hashes, payload: __swift_bridge__$TransactionsFields(Hashes: __swift_bridge__$Transactions$FieldOfHashes(_0: { let val = _0; val.isOwned = false; return val.ptr }())))
+        case Transactions.Full(let _0):
+            return __swift_bridge__$Transactions(tag: __swift_bridge__$Transactions$Full, payload: __swift_bridge__$TransactionsFields(Full: __swift_bridge__$Transactions$FieldOfFull(_0: { let val = _0; val.isOwned = false; return val.ptr }())))
         }
     }
 }
 extension __swift_bridge__$Transactions {
     func intoSwiftRepr() -> Transactions {
         switch self.tag {
-            case __swift_bridge__$Transactions$Hashes:
-                return Transactions.Hashes(RustVec(ptr: self.payload.Hashes._0))
-            case __swift_bridge__$Transactions$Full:
-                return Transactions.Full(RustVec(ptr: self.payload.Full._0))
-            default:
-                fatalError("Unreachable")
+        case __swift_bridge__$Transactions$Hashes:
+            return Transactions.Hashes(RustVec(ptr: self.payload.Hashes._0))
+        case __swift_bridge__$Transactions$Full:
+            return Transactions.Full(RustVec(ptr: self.payload.Full._0))
+        default:
+            fatalError("Unreachable")
         }
     }
 }
@@ -1093,7 +1098,7 @@ extension HeliosClientRefMut {
     }
     class CbWrapper$HeliosClient$start {
         var cb: (Result<StartUpState, Never>) -> ()
-    
+
         init(cb: @escaping (Result<StartUpState, Never>) -> ()) {
             self.cb = cb
         }
@@ -1118,7 +1123,7 @@ extension HeliosClientRefMut {
     }
     class CbWrapper$HeliosClient$shutdown {
         var cb: (Result<(), Never>) -> ()
-    
+
         init(cb: @escaping (Result<(), Never>) -> ()) {
             self.cb = cb
         }
@@ -1151,7 +1156,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$call {
         var cb: (Result<ResponseVec8, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseVec8, Never>) -> ()) {
             self.cb = cb
         }
@@ -1176,7 +1181,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$send_raw_transaction {
         var cb: (Result<ResponseString, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseString, Never>) -> ()) {
             self.cb = cb
         }
@@ -1201,7 +1206,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$estimate_gas {
         var cb: (Result<ResponseU64, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseU64, Never>) -> ()) {
             self.cb = cb
         }
@@ -1226,7 +1231,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$chain_id {
         var cb: (Result<ResponseU64, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseU64, Never>) -> ()) {
             self.cb = cb
         }
@@ -1251,7 +1256,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_gas_price {
         var cb: (Result<ResponseString, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseString, Never>) -> ()) {
             self.cb = cb
         }
@@ -1276,7 +1281,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_priority_fee {
         var cb: (Result<ResponseString, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseString, Never>) -> ()) {
             self.cb = cb
         }
@@ -1301,7 +1306,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_block_number {
         var cb: (Result<ResponseString, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseString, Never>) -> ()) {
             self.cb = cb
         }
@@ -1326,7 +1331,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_coinbase {
         var cb: (Result<ResponseString, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseString, Never>) -> ()) {
             self.cb = cb
         }
@@ -1351,7 +1356,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_balance {
         var cb: (Result<ResponseString, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseString, Never>) -> ()) {
             self.cb = cb
         }
@@ -1376,7 +1381,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_nonce {
         var cb: (Result<ResponseU64, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseU64, Never>) -> ()) {
             self.cb = cb
         }
@@ -1401,7 +1406,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_block_by_number {
         var cb: (Result<ResponseBlock, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseBlock, Never>) -> ()) {
             self.cb = cb
         }
@@ -1426,7 +1431,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_block_by_hash {
         var cb: (Result<ResponseBlock, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseBlock, Never>) -> ()) {
             self.cb = cb
         }
@@ -1451,7 +1456,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_block_transaction_count_by_hash {
         var cb: (Result<ResponseU64, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseU64, Never>) -> ()) {
             self.cb = cb
         }
@@ -1476,7 +1481,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_block_transaction_count_by_number {
         var cb: (Result<ResponseU64, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseU64, Never>) -> ()) {
             self.cb = cb
         }
@@ -1501,7 +1506,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_transaction_receipt {
         var cb: (Result<ResponseTransactionReceipt, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseTransactionReceipt, Never>) -> ()) {
             self.cb = cb
         }
@@ -1526,7 +1531,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_transaction_by_hash {
         var cb: (Result<ResponseTransaction, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseTransaction, Never>) -> ()) {
             self.cb = cb
         }
@@ -1551,7 +1556,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_transaction_by_block_hash_and_index {
         var cb: (Result<ResponseTransaction, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseTransaction, Never>) -> ()) {
             self.cb = cb
         }
@@ -1576,7 +1581,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_logs {
         var cb: (Result<ResponseVecLog, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseVecLog, Never>) -> ()) {
             self.cb = cb
         }
@@ -1601,7 +1606,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_code {
         var cb: (Result<ResponseVec8, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseVec8, Never>) -> ()) {
             self.cb = cb
         }
@@ -1626,7 +1631,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$get_storage_at {
         var cb: (Result<ResponseString, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseString, Never>) -> ()) {
             self.cb = cb
         }
@@ -1651,7 +1656,7 @@ extension HeliosClientRef {
     }
     class CbWrapper$HeliosClient$syncing {
         var cb: (Result<ResponseSyncing, Never>) -> ()
-    
+
         init(cb: @escaping (Result<ResponseSyncing, Never>) -> ()) {
             self.cb = cb
         }
