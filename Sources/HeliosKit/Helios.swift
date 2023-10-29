@@ -6,14 +6,16 @@ public final class Helios {
 
     public static let defaultDataDirectory: URL? = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
 
-    private enum Constants {
-        static let ip: String = "127.0.0.1"
-        static let port: UInt16 = 8545
+    public enum Defaults {
+        public static let ip: String = "127.0.0.1"
+        public static let port: UInt16 = 8545
     }
 
-    public var clientURL: URL { URL(string: "http://\(Constants.ip):\(Constants.port)").unsafelyUnwrapped }
+    public var clientURL: URL { URL(string: "http://\(ip):\(port)").unsafelyUnwrapped }
 
     private let client: HeliosClient = .init()
+    private var ip: String = Defaults.ip
+    private var port: UInt16 = Defaults.port
 
     /// Starts the Helios client
     /// - Parameters:
@@ -26,6 +28,8 @@ public final class Helios {
         rpcURL: URL,
         consensusURL: URL = URL(string: "https://www.lightclientdata.org").unsafelyUnwrapped,
         checkpoint: String? = nil,
+        localRpcIp: String = Defaults.ip,
+        localRpcPort: UInt16 = Defaults.port,
         network: Network = .mainnet,
         dataDirectory: URL? = Helios.defaultDataDirectory
     ) async throws {
@@ -53,14 +57,17 @@ public final class Helios {
             rpcURL.absoluteString,
             consensusURL.absoluteString,
             _checkpoint,
-            Constants.ip,
-            Constants.port,
+            localRpcIp,
+            localRpcPort,
             network.asHeliosNetwork(),
             dataDirectoryPath
         )
 
         if !status.started {
             throw HeliosError.failedToStartClient(status.error.toString())
+        } else {
+            ip = localRpcIp
+            port = localRpcPort
         }
     }
 
@@ -351,5 +358,7 @@ public final class Helios {
     /// Shuts down the client
     public func shutdown() async {
         await client.shutdown()
+        ip = Defaults.ip
+        port = Defaults.port
     }
 }
