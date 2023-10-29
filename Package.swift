@@ -23,7 +23,7 @@ let package = Package(
         .binaryTarget(
             name: "helios",
             url: "https://github.com/rkreutz/HeliosKit/releases/download/0.5.1/helios.xcframework.zip",
-            checksum: "b792f05e47aa9c14905f523badae307e98ddddde16776946279f357a5f065ad5"),
+            checksum: "2799e988dd06f37ca0991b11a5074f603af7cd3dccee70c201fa9e8d01f87453"),
         .target(
             name: "HeliosKit",
             dependencies: ["helios"]),
