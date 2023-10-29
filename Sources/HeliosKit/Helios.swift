@@ -22,8 +22,10 @@ public final class Helios {
     ///   - rpcURL: the unsafe execution RPC URL
     ///   - consensusURL: the consensus RPC URL
     ///   - checkpoint: an optional verified checkpoint. If not provided will try to fetch latest checkpoint from `dataDirectoryPath`.
-    ///   - network: the network to connect to.
-    ///   - dataDirectory: the directory to save data related to Helios. If `nil` no data will be saved across launches of Helios.
+    ///   - localRpcIp: the IP which the local RPC node should bind to. Defaults to `127.0.0.1`.
+    ///   - localRpcPort: the port which the local RPC node should bind to. Defaults to `8545`.
+    ///   - network: the network to connect to. Defaults to `mainnet`.
+    ///   - dataDirectory: the directory to save data related to Helios. If `nil` no data will be saved across launches of Helios. Defaults to the `.documentsDirectory` in `.userDomainMask`.
     public func start(
         rpcURL: URL,
         consensusURL: URL = URL(string: "https://www.lightclientdata.org").unsafelyUnwrapped,
