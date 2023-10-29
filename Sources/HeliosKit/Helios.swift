@@ -33,19 +33,6 @@ public final class Helios {
         network: Network = .mainnet,
         dataDirectory: URL? = Helios.defaultDataDirectory
     ) async throws {
-        var _checkpoint: String?
-        if let checkpoint = checkpoint {
-            _checkpoint = checkpoint
-        } else if let dataDirectory = dataDirectory {
-            let checkpointFile: URL
-            if #available(iOS 16.0, macOS 13.0, *) {
-                checkpointFile = dataDirectory.appending(path: "checkpoint")
-            } else {
-                checkpointFile = dataDirectory.appendingPathComponent("checkpoint")
-            }
-            _checkpoint = (try? Data(contentsOf: checkpointFile))?.hexEncodedString()
-        }
-
         let dataDirectoryPath: String?
         if #available(iOS 16.0, macOS 13.0, *) {
             dataDirectoryPath = dataDirectory?.path()
@@ -53,10 +40,16 @@ public final class Helios {
             dataDirectoryPath = dataDirectory?.path
         }
 
+        if let dataDirectoryPath = dataDirectoryPath {
+            if !FileManager.default.isWritableFile(atPath: dataDirectoryPath) {
+                throw HeliosError.dataDirectoryNotAvailable
+            }
+        }
+
         let status = await client.start(
             rpcURL.absoluteString,
             consensusURL.absoluteString,
-            _checkpoint,
+            checkpoint,
             localRpcIp,
             localRpcPort,
             network.asHeliosNetwork(),
